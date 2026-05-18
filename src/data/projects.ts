@@ -43,11 +43,7 @@ export const projects: Project[] = [
       ca: "Vaig desenvolupar una plataforma de comerç electrònic completa des de zero. L'aplicació inclou un carret de compres funcional, integració amb Stripe per a pagaments, panell d'administració per gestionar productes i inventari, sistema d'usuaris amb rols (client/admin), cerca avançada de productes, filtratge per categories i notificacions per email.\n\nEl backend està construït amb Node.js i Express, utilitzant PostgreSQL com a base de dades i Prisma com ORM. El frontend està desenvolupat amb Astro per a màxima velocitat de càrrega i SEO optimitzat.",
     },
     tags: ["Astro", "TypeScript", "Stripe", "Node.js", "PostgreSQL", "Prisma"],
-    images: [
-      { url: "/projects/ecommerce/hero.jpg", alt: { es: "Vista principal de la tienda", en: "Main store view", ca: "Vista principal de la botiga" } },
-      { url: "/projects/ecommerce/cart.jpg", alt: { es: "Carrito de compras", en: "Shopping cart", ca: "Carret de compres" } },
-      { url: "/projects/ecommerce/admin.jpg", alt: { es: "Panel de administración", en: "Admin panel", ca: "Panell d'administració" } },
-    ],
+    images: [],
     repo: "https://github.com/",
     demo: "https://demo.com",
     featured: true,
@@ -69,10 +65,7 @@ export const projects: Project[] = [
       ca: "Aplicació de gestió de tasques dissenyada per a equips àgils. Permet crear taulers Kanban, assignar tasques a membres de l'equip, establir terminis, comentar en tasques i rebre notificacions en temps real.\n\nLa col·laboració en temps real està implementada amb WebSockets (Socket.io), permetent veure els canvis d'altres usuaris instantàniament. El sistema d'autenticació utilitza JWT i permet login amb Google.",
     },
     tags: ["React", "Node.js", "Socket.io", "MongoDB", "TypeScript"],
-    images: [
-      { url: "/projects/tasks/board.jpg", alt: { es: "Tablero Kanban", en: "Kanban board", ca: "Tauler Kanban" } },
-      { url: "/projects/tasks/task.jpg", alt: { es: "Detalle de tarea", en: "Task detail", ca: "Detall de tasca" } },
-    ],
+    images: [],
     repo: "https://github.com/",
     demo: "https://demo.com",
     featured: true,
@@ -89,15 +82,13 @@ export const projects: Project[] = [
       ca: "Sistema intern de gestió per a una empresa de logística amb mòduls d'inventari, comandes i reporting.",
     },
     description: {
-      es: "Desarrollé un sistema de gestión empresarial completo para una empresa de logística. El sistema incluye módulos de:\n\n- **Inventario**: Control de stock en tiempo real, alertas de stock mínimo, gestión de almacén\n- **Pedidos**: Creación y seguimiento de pedidos, estados de envío, integración con transportistas\n- **Reporting**: Dashboard con métricas clave, gráficos de ventas, informes exportables a PDF/Excel\n- **Usuarios**: Sistema de roles y permisos, historial de acciones\n\nEste fue un proyecto privado para un cliente, por lo que el código no está disponible públicamente.",
-      en: "I developed a complete enterprise management system for a logistics company. The system includes modules for:\n\n- **Inventory**: Real-time stock control, minimum stock alerts, warehouse management\n- **Orders**: Order creation and tracking, shipping statuses, carrier integration\n- **Reporting**: Dashboard with key metrics, sales charts, reports exportable to PDF/Excel\n- **Users**: Role and permission system, action history\n\nThis was a private project for a client, so the code is not publicly available.",
-      ca: "Vaig desenvolupar un sistema de gestió empresarial complet per a una empresa de logística. El sistema inclou mòduls de:\n\n- **Inventari**: Control d'estoc en temps real, alertes d'estoc mínim, gestió d'emmagatzematge\n- **Comandes**: Creació i seguiment de comandes, estats d'enviament, integració amb transportistes\n- **Reporting**: Dashboard amb mètriques clau, gràfics de vendes, informes exportables a PDF/Excel\n- **Usuaris**: Sistema de rols i permisos, historial d'accions\n\nAquest va ser un projecte privat per a un client, per la qual cosa el codi no està disponible públiquement.",
+      es: "Desarrollé un sistema de gestión empresarial completo para una empresa de logística. El sistema incluye módulos de:\n\n- **Inventario**: Control de stock en tiempo real, alertas de stock mínimo, gestión de almacén\n\n- **Pedidos**: Creación y seguimiento de pedidos, estados de envío, integración con transportistas\n- **Reporting**: Dashboard con métricas clave, gráficos de ventas, informes exportables a PDF/Excel\n- **Usuarios**: Sistema de roles y permisos, historial de acciones\n\nEste fue un proyecto privado para un cliente, por lo que el código no está disponible públicamente.",
+      en: "I developed a complete enterprise management system for a logistics company. The system includes modules for:\n\n- **Inventory**: Real-time stock control, minimum stock alerts, warehouse management\n\n- **Orders**: Order creation and tracking, shipping statuses, carrier integration\n- **Reporting**: Dashboard with key metrics, sales charts, reports exportable to PDF/Excel\n- **Users**: Role and permission system, action history\n\nThis was a private project for a client, so the code is not publicly available.",
+      ca: "Vaig desenvolupar un sistema de gestió empresarial complet per a una empresa de logística. El sistema inclou mòduls de:\n\n- **Inventari**: Control d'estoc en temps real, alertes d'estoc mínim, gestió d'emmagatzematge\n- **Comandes**: Creació i seguiment de comandes, estats d'enviament, integració amb transportistes\n- **Reporting**: Dashboard amb mètriques clau, gràfics de vendes, informes exportables a PDF/Excel\n\n- **Usuaris**: Sistema de rols i permisos, historial d'accions\n\nAquest va ser un projecte privat per a un client, per la qual cosa el codi no està disponible públiquement.",
     },
     tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Tailwind CSS"],
     images: [
-      { url: "/projects/enterprise/dashboard.jpg", alt: { es: "Dashboard principal", en: "Main dashboard", ca: "Dashboard principal" } },
-      { url: "/projects/enterprise/inventory.jpg", alt: { es: "Gestión de inventario", en: "Inventory management", ca: "Gestió d'inventari" } },
-      { url: "/projects/enterprise/orders.jpg", alt: { es: "Seguimiento de pedidos", en: "Order tracking", ca: "Seguiment de comandes" } },
+      
     ],
     featured: true,
     private: true,
@@ -120,9 +111,35 @@ export const projects: Project[] = [
     },
     tags: ["Next.js", "PostgreSQL", "D3.js", "TypeScript"],
     images: [
-      { url: "/projects/api/metrics.jpg", alt: { es: "Métricas en tiempo real", en: "Real-time metrics", ca: "Mètriques en temps real" } },
+      { url: "/projects/api/metrics.svg", alt: { es: "Métricas en tiempo real", en: "Real-time metrics", ca: "Mètriques en temps real" } },
     ],
     repo: "https://github.com/",
     featured: false,
+  },
+  {
+    title: {
+      es: "Proyecto Template",
+      en: "Template Project",
+      ca: "Projecte Template",
+    },
+    shortDescription: {
+      es: "Proyecto de prueba con galería de imágenes para demostrar la funcionalidad.",
+      en: "Test project with image gallery to demonstrate functionality.",
+      ca: "Projecte de prova amb galeria d'imatges per demostrar la funcionalitat.",
+    },
+    description: {
+      es: "Este es un proyecto de prueba creado para demostrar la funcionalidad de la galería de imágenes.\n\nLa galería permite:\n- Ver múltiples imágenes del proyecto\n- Navegar entre ellas fácilmente\n- Ver descripciones de cada imagen\n\nTodas las imágenes están organizadas en la carpeta `public/projects/`.",
+      en: "This is a test project created to demonstrate the image gallery functionality.\n\nThe gallery allows:\n- View multiple project images\n- Navigate between them easily\n- See descriptions for each image\n\nAll images are organized in the `public/projects/` folder.",
+      ca: "Aquest és un projecte de prova creat per demostrar la funcionalitat de la galeria d'imatges.\n\nLa galeria permet:\n- Veure múltiples imatges del projecte\n- Navegar entre elles fàcilment\n- Veure descripcions de cada imatge\n\nTotes les imatges estan organitzades a la carpeta `public/projects/`.",
+    },
+    tags: ["Astro", "TypeScript", "Template"],
+    images: [
+      { url: "/projects/template/hero.svg", alt: { es: "Vista principal del proyecto", en: "Main project view", ca: "Vista principal del projecte" } },
+      { url: "/projects/template/dashboard.svg", alt: { es: "Vista del dashboard", en: "Dashboard view", ca: "Vista del dashboard" } },
+      { url: "/projects/template/settings.svg", alt: { es: "Panel de configuración", en: "Settings panel", ca: "Panell de configuració" } },
+    ],
+    repo: "https://github.com/Elcris1/portfolio",
+    demo: "http://localhost:4321",
+    featured: true,
   },
 ]
