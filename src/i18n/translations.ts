@@ -42,6 +42,11 @@ export const translations = {
       light: "Claro",
       dark: "Oscuro",
     },
+    todo: {
+      title: "Próximamente",
+      description: "Estoy trabajando en esta sección. Mientras tanto, puedes echar un vistazo a mis proyectos o contactarme.",
+      section: "Esta sección está en construcción"
+    },
   },
   en: {
     nav: {
@@ -84,6 +89,11 @@ export const translations = {
       light: "Light",
       dark: "Dark",
     },
+    todo: {
+      title: "Coming soon",
+      description: "I'm working on this section. In the meantime, you can take a look at my projects or contact me.",
+      section: "This section is under construction"
+    },
   },
   ca: {
     nav: {
@@ -125,6 +135,11 @@ export const translations = {
     theme: {
       light: "Clar",
       dark: "Fosc",
+    },
+    todo: {
+      title: "Proíximament",
+      description: "Estic treballant en aquesta secció. Mentrestant, pots fer un cop d'ull als meus projectes o contactar-me.",
+      section: "Aquesta secció està en construcció"
     },
   },
 } as const

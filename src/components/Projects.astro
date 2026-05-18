@@ -18,6 +18,7 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
         <h2 class="text-3xl font-bold">{t.projects.title}</h2>
       </div>
       <p class="text-gray-600 dark:text-gray-400 mb-12 ml-12">{t.projects.subtitle}</p>
+      <h3 class="text-xl font-semibold mb-6">{t.todo.section}</h3>
       
       <div class="grid md:grid-cols-2 gap-6">
         {sortedProjects.map((project, index) => (
