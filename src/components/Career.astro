@@ -1,5 +1,6 @@
 ---
-import { career, type Language } from '../data/career'
+import { career } from '../data/career'
+import { type Language } from '../i18n/translations'
 import { getLangFromUrl, useTranslations } from '../i18n/utils'
 
 const lang = getLangFromUrl(Astro.url) as Language
@@ -21,7 +22,6 @@ const work = sortedCareer.filter(item => item.type === 'work')
         <span class="text-4xl">💼</span>
         <h2 class="text-3xl font-bold">{t.career.title}</h2>
       </div>
-      <p class="text-gray-500 dark:text-gray-400 mb-12 ml-12">From studies to now</p>
       
       <div class="relative">
         <div class="absolute inset-0 flex justify-center">
