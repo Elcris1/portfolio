@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/Header.astro'
+import Hero from '../components/Hero.astro'
+import About from '../components/About.astro'
+import Career from '../components/Career.astro'
+import Projects from '../components/Projects.astro'
+import Contact from '../components/Contact.astro'
+import Footer from '../components/Footer.astro'
+import { config } from '../data/config'
+import { languages } from '../i18n/utils'
+
+export function getStaticPaths() {
+  return languages.map(lang => ({ params: { lang } }))
+}
+---
+
+<Layout title={`${config.name} | ${config.title}`}>
+  <Header />
+  <main>
+    <Hero />
+    <About />
+    <Career />
+    <Projects />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>

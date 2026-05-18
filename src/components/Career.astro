@@ -1,0 +1,65 @@
+---
+import { config } from '../data/config'
+import { career, type Language } from '../data/career'
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url) as Language
+const t = useTranslations(lang)
+---
+
+<section id="career" class="py-24">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="animate-on-scroll">
+      <h2 class="text-3xl font-bold mb-12">{t.career.title}</h2>
+      
+      <div class="relative">
+        <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gray-200 dark:bg-gray-800 transform md:-translate-x-px"></div>
+        
+        <div class="space-y-12">
+          {career.map((item, index) => (
+            <div class="relative animate-on-scroll" style={`animation-delay: ${index * 100}ms`}>
+              <div class={`flex items-start md:gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                <div class={`hidden md:block w-1/2 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
+                  {index % 2 === 0 && (
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800">
+                      <p class="text-sm font-medium mb-1 text-indigo-600 dark:text-indigo-400">{item.period}</p>
+                      <h3 class="text-lg font-semibold">{item.title[lang]}</h3>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm">{item.organization}</p>
+                      <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">{item.description[lang]}</p>
+                    </div>
+                  )}
+                </div>
+                
+                <div class="absolute left-0 md:left-1/2 w-4 h-4 rounded-full border-4 border-white dark:border-gray-950 transform -translate-x-1/2 bg-indigo-600"></div>
+                
+                <div class="md:hidden ml-8 bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800">
+                  <span class={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 ${item.type === 'work' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600' : 'bg-green-100 dark:bg-green-900/30 text-green-600'}`}>
+                    {item.type === 'work' ? t.career.work : t.career.education}
+                  </span>
+                  <p class="text-sm font-medium mb-1 text-indigo-600 dark:text-indigo-400">{item.period}</p>
+                  <h3 class="text-lg font-semibold">{item.title[lang]}</h3>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm">{item.organization}</p>
+                  <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">{item.description[lang]}</p>
+                </div>
+                
+                <div class="hidden md:block w-1/2">
+                  {index % 2 !== 0 && (
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800">
+                      <span class={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 ${item.type === 'work' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600' : 'bg-green-100 dark:bg-green-900/30 text-green-600'}`}>
+                        {item.type === 'work' ? t.career.work : t.career.education}
+                      </span>
+                      <p class="text-sm font-medium mb-1 text-indigo-600 dark:text-indigo-400">{item.period}</p>
+                      <h3 class="text-lg font-semibold">{item.title[lang]}</h3>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm">{item.organization}</p>
+                      <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">{item.description[lang]}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

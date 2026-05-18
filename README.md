@@ -1,43 +1,47 @@
-# Astro Starter Kit: Minimal
+# Portfolio Personal
 
-```sh
-bun create astro@latest -- --template minimal
+Portfolio personal construido con Astro y Tailwind CSS.
+
+## Idiomas disponibles
+
+- **Español** (`/es/`)
+- **English** (`/en/`)
+- **Català** (`/ca/`)
+
+El idioma por defecto es español. Cambia el idioma usando los selectores en el header.
+
+## Personalización
+
+Edita los archivos en `/src/data/` para actualizar el contenido:
+
+- **`config.ts`**: Información personal, redes sociales, stack tecnológico
+- **`career.ts`**: Experiencia laboral y formación
+- **`projects.ts`**: Lista de proyectos
+
+Para traducir contenido personalizado, edita `/src/i18n/translations.ts`.
+
+## Desarrollo
+
+```bash
+pnpm install
+pnpm dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Estructura
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```
+src/
+├── components/   # Componentes Astro
+├── data/          # Archivos de configuración
+├── i18n/          # Traducciones
+├── layouts/      # Layout principal
+└── pages/         # Páginas con rutas dinámicas [lang]
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Despliegue
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+El proyecto está listo para desplegar en Vercel, Netlify o cualquier hosting estático.
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```bash
+pnpm build
+```
