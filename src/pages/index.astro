@@ -1,3 +1,5 @@
 ---
-return Astro.redirect('/en')
+const base = import.meta.env.BASE_PATH || '/';
+const redirectTo = base.endsWith('/') ? `${base}en` : `${base}/en`;
+return Astro.redirect(redirectTo);
 ---
