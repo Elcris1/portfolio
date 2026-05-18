@@ -144,4 +144,4 @@ export const translations = {
   },
 } as const
 
-export type TranslationKeys = typeof translations.es
+export type TranslationKeys = typeof translations
