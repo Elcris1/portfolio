@@ -1,5 +1,6 @@
 ---
-import { config, type Language } from '../data/config'
+import { config } from '../data/config'
+import type { Language } from '../i18n/translations'
 import { getLangFromUrl, useTranslations } from '../i18n/utils'
 
 const lang = getLangFromUrl(Astro.url) as Language

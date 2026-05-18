@@ -1,3 +1,5 @@
+export type Language = 'es' | 'en' | 'ca'
+
 export const translations = {
   es: {
     nav: {
@@ -127,5 +129,4 @@ export const translations = {
   },
 } as const
 
-export type Language = keyof typeof translations
 export type TranslationKeys = typeof translations.es

@@ -30,5 +30,3 @@ export const config = {
     Other: ["Git", "Linux", "Agile Methodologies"],
   },
 }
-
-export type Language = 'es' | 'en' | 'ca'

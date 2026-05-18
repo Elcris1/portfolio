@@ -1,4 +1,4 @@
-import type { Language } from "./config"
+import type { Language } from "../i18n/translations"
 
 export interface ProjectImage {
   url: string
