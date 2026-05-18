@@ -19,19 +19,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 11
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: pnpm
+      - name: Checkout your repository using git
+        uses: actions/checkout@v6
 
       - name: Create .env file
         run: |
@@ -39,18 +28,15 @@ jobs:
           echo "SITE_URL=${{ vars.SITE_URL || 'https://Elcris1.github.io' }}" >> .env
           echo "BASE_PATH=${{ vars.BASE_PATH || '/portfolio' }}" >> .env
 
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build
-        run: pnpm build
-        env:
-          NODE_ENV: production
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
+      - name: Install, build, and upload your site
+        uses: withastro/action@v6
+        # with:
+          # path: . # The root location of your Astro project inside the repository. (optional)
+          # node-version: 24 # The specific version of Node that should be used to build your site. Defaults to 22. (optional)
+          # package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
+          # build-cmd: pnpm run build # The command to run to build your site. Runs the package build script/task by default. (optional)
+        # env:
+          # PUBLIC_POKEAPI: 'https://pokeapi.co/api/v2' # Use single quotation marks for the variable value. (optional)
 
   deploy:
     environment:
@@ -61,4 +47,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
