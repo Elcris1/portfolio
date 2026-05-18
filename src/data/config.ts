@@ -19,14 +19,15 @@ export const config = {
     twitter: "",
   },
   about: {
-    es: "Soy un desarrollador fullstack pasionado por crear experiencias digitales que combinen diseño elegante con funcionalidad robusta. Me especializo en construir aplicaciones web modernas, desde interfaces de usuario interactivas hasta APIs escalables y sistemas backend.",
-    en: "I'm a fullstack developer passionate about creating digital experiences that combine elegant design with robust functionality. I specialize in building modern web applications, from interactive user interfaces to scalable APIs and backend systems.",
-    ca: "Sóc un desenvolupador fullstack apassionat per crear experiències digitals que combinin disseny elegant amb funcionalitat robusta. M'especialitzo en construir aplicacions web modernes, des d'interfícies d'usuari interactives fins a APIs escalables i sistemes backend.",
+    es: "Desarrollador Fullstack con fuerte especialización en backend. Me dedico a diseñar arquitecturas eficientes, bases de datos optimizadas y APIs de alto rendimiento. Complemento esta experiencia con la habilidad de crear el frontend de aplicaciones web modernas, garantizando interfaces fluidas, interactivas y centradas en el usuario.",
+    en: "Fullstack Developer with a strong specialization in backend development. I am dedicated to designing efficient architectures, optimized databases, and high-performance APIs. I complement this expertise with the ability to build the frontend of modern web applications, ensuring smooth, interactive, and user-centered interfaces.",
+    ca: "Desenvolupador Fullstack amb una forta especialització en backend. Em dedico a dissenyar arquitectures eficients, bases de dades optimitzades i APIs d'alt rendiment. Complemento aquesta experiència amb l'habilitat de crear el frontend d'aplicacions web modernes, garantint interfícies fluides, interactives i centrades en l'usuari.",
   },
   stack: {
-    Frontend: ["Astro", "TypeScript", "Tailwind CSS"],
-    Backend: ["Node.js", "PostgreSQL", "Prisma"],
-    DevOps: ["Docker", "GitHub Actions", "Vercel"],
-    Other: ["Git", "Linux", "Agile Methodologies"],
+    Frontend: ["Angular", "Astro", "JetPackCompose", "Tailwind CSS"],
+    Backend: ["SpringBoot", "NestJS", "ASP.NET Core", "SQL/NoSQL"],
+    DevOps: ["Docker", "GitHub Actions", "Google Cloud"],
+    Methodologies: ["Scrum", "TDD", "SDD", "AI-Driven Development"],
+    Other: ["Git", "Linux", "Python", "MQTT"],
   },
 }
