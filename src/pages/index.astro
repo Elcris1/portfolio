@@ -1,5 +1,9 @@
 ---
-const base = import.meta.env.BASE_PATH || '/';
-const redirectTo = base.endsWith('/') ? `${base}en` : `${base}/en`;
+import { defaultLang } from "../i18n/translations";
+import { getBasePath } from "../i18n/utils";
+
+const base = getBasePath();
+const baseWithoutSlash = base.endsWith("/") ? base.slice(0, -1) : base;
+const redirectTo = `${baseWithoutSlash}/${defaultLang}`;
 return Astro.redirect(redirectTo);
 ---

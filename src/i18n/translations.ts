@@ -145,3 +145,4 @@ export const translations = {
 } as const
 
 export type TranslationKeys = typeof translations
+export const defaultLang: Language = 'en'
