@@ -49,7 +49,7 @@ export const career: CareerItem[] = [
       ca: "Tècnic Informàtic",
     },
     organization: "Electra Homedes",
-    period: "2020 — 2025",
+    period: "06/2020 — 06/2025",
     startYear: 2020,
     endYear: 2025,
     description: {
@@ -66,15 +66,33 @@ export const career: CareerItem[] = [
       ca: "Desenvolupador Fullstack Junior de pràctiques",
     },
     organization: "Hiberus",
-    period: "2025 — ",
+    period: "06/2025 — 08/2025",
     startYear: 2025,
-    endYear: null,
+    endYear: 2025,
     description: {
-      es: "AI Strategy: desarrollo impulsado por IA en aplicaciones Full-Stack internas con Spring Boot y React. Desarrollo Full-Stack para el proyecto de Sportium con ASP.NET Core y Angular.",
-      en: "AI Strategy: AI-driven development on internal Full-Stack applications with Spring Boot and React. Full-Stack development for the Sportium project with ASP.NET Core and Angular.",
-      ca: "AI Strategy: desenvolupament impulsat per IA en aplicacions internes Full-Stack amb Spring Boot i React. Desenvolupament Full-Stack per a al projecte Sportium amb ASP.NET Core i Angular.",
+      es: "Desarrollo Full-Stack para el proyecto de Sportium con ASP.NET Core y Angular con SQLServer y PostgreSQL. Metodología Scrum con CI/CD.",
+      en: "Full-Stack development for the Sportium project with ASP.NET Core and Angular using SQLServer and PostgreSQL. Scrum methodology with CI/CD.",
+      ca: "Desenvolupament Full-Stack per al projecte de Sportium amb ASP.NET Core i Angular amb SQLServer i PostgreSQL. Metodologia Scrum amb CI/CD.",
     },
   },
+  {
+    type: "work",
+    title: {
+      es: "Junior Fullstack Developer de prácticas",
+      en: "Junior Fullstack Developer Internship",
+      ca: "Desenvolupador Fullstack Junior de pràctiques",
+    },
+    organization: "Hiberus",
+    period: "04/2026 — ",
+    startYear: 2026,
+    endYear: null,
+    description: {
+      es: "AI Strategy centrado en el desarrollo impulsado por IA en aplicaciones Full-Stack internas con Spring Boot y React. TDD y SDD para garantizar la calidad del código y la eficiencia del desarrollo.",
+      en: "AI Strategy focused on AI-driven development on internal Full-Stack applications with Spring Boot and React. TDD and SDD to ensure code quality and development efficiency.",
+      ca: "AI Strategy centrat en desenvolupament impulsat per IA en aplicacions internes Full-Stack amb Spring Boot i React. TDD i SDD per garantir la qualitat del codi i l'eficiència del desenvolupament.",
+    },
+  },
+
   {
     type: "education",
     title: {
