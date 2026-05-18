@@ -2,51 +2,61 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ master ] 
+    branches:
+      - main
+  workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 concurrency:
-  group: "pages"
-  cancel-in-progress: true
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install pnpm
+      - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9 # Forces a recent pnpm version, or leave empty to use package.json's packageManager field
 
-      - name: Install Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'pnpm'
+          node-version: '20'
+          cache: pnpm
+
+      - name: Create .env file
+        run: |
+          echo "ENV=prod" > .env
+          echo "SITE_URL=${{ vars.SITE_URL || 'https://Elcris1.github.io' }}" >> .env
+          echo "BASE_PATH=${{ vars.BASE_PATH || '/portfolio' }}" >> .env
 
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build Astro
-        run: pnpm run build
+      - name: Build
+        run: pnpm build
+        env:
+          NODE_ENV: production
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist # Astro outputs its build to the 'dist' folder by default
+          path: dist
 
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

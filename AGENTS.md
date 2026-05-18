@@ -12,6 +12,19 @@ pnpm dev     # Development server
 pnpm build   # Production build
 ```
 
+## Deployment
+- GitHub Actions auto-deploys on push to `main`
+- Workflow creates `.env` with `ENV=prod` for production build
+- Config uses `site` and `base` only when `ENV=prod`
+
+### Environment Variables
+Create `.env` or `.env.example` with:
+```
+ENV=dev              # or 'prod' for production
+SITE_URL=...
+BASE_PATH=...
+```
+
 ## Key Structure
 
 ### Routes & i18n
