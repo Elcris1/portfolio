@@ -203,10 +203,30 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
     document.body.style.overflow = 'hidden';
   }
 
-  function showLightboxImage() {
-    lightboxImg.src = currentImages[currentIndex].url;
-    lightboxImg.alt = currentImages[currentIndex].alt[lang];
-    lightboxCaption.textContent = currentImages[currentIndex].alt[lang];
+function showLightboxImage() {
+    const imgData = currentImages[currentIndex];
+    lightboxImg.src = imgData.url;
+    lightboxImg.alt = imgData.alt?.[lang] || '';
+    lightboxCaption.textContent = imgData.alt?.[lang] || '';
+    lightboxPrev.classList.toggle('hidden', currentIndex === 0);
+    lightboxNext.classList.toggle('hidden', currentIndex === currentImages.length - 1);
+
+    const galleryMainImg = document.getElementById('gallery-main-img');
+    const thumbs = document.querySelectorAll('.gallery-thumb');
+    const imageCaption = document.getElementById('image-caption');
+    if (galleryMainImg) {
+      galleryMainImg.src = imgData.url;
+      galleryMainImg.alt = imgData.alt?.[lang] || '';
+    }
+    if (imageCaption) {
+      imageCaption.textContent = imgData.alt?.[lang] || `Image ${currentIndex + 1} of ${currentImages.length}`;
+    }
+    thumbs.forEach((t, i) => {
+      t.classList.toggle('border-indigo-500', i === currentIndex);
+      t.classList.toggle('opacity-100', i === currentIndex);
+      t.classList.toggle('border-transparent', i !== currentIndex);
+      t.classList.toggle('opacity-60', i !== currentIndex);
+    });
   }
 
   function closeLightbox() {
