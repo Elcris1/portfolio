@@ -150,22 +150,22 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
   </div>
 </div>
 
-<div id="lightbox" class="fixed inset-0 z-[60] hidden bg-black/95 flex-col">
-  <div class="flex-1 flex items-center justify-center p-4 min-h-0" id="lightbox-content">
-    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-full object-contain" />
+<div id="lightbox" class="fixed inset-0 z-[60] hidden bg-black/95 flex flex-col">
+  <div class="flex items-center justify-center p-4" id="lightbox-content" style="flex: 1 1 auto; min-height: 0;">
+    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-full object-contain" style="max-height: calc(100vh - 8rem);" />
   </div>
-  <p id="lightbox-caption" class="px-6 py-4 text-center text-white bg-black/50 text-sm"></p>
-  <button id="lightbox-close" class="absolute top-4 right-4 p-2 text-white/70 hover:text-white transition-colors">
+  <p id="lightbox-caption" class="px-6 py-4 text-center text-white bg-black/50 text-sm" style="flex: 0 0 auto;"></p>
+  <button id="lightbox-close" class="absolute top-4 right-4 p-2 text-white/70 hover:text-white transition-colors z-10">
     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
     </svg>
   </button>
-  <button id="lightbox-prev" class="absolute left-4 top-1/2 -translate-y-1/2 p-2 text-white/70 hover:text-white transition-colors">
+  <button id="lightbox-prev" class="absolute left-4 top-1/2 -translate-y-1/2 p-2 text-white/70 hover:text-white transition-colors z-10">
     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
     </svg>
   </button>
-  <button id="lightbox-next" class="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-white/70 hover:text-white transition-colors">
+  <button id="lightbox-next" class="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-white/70 hover:text-white transition-colors z-10">
     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
     </svg>
@@ -189,9 +189,14 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
   let currentImages = [];
   let currentIndex = 0;
 
-  function openLightbox(el) {
-    currentImages = Array.from(document.querySelectorAll('#modal-content img[data-full]'));
-    currentIndex = currentImages.indexOf(el);
+  function openLightbox() {
+    const mainImg = document.getElementById('gallery-main-img');
+    if (!mainImg) return;
+    const imagesData = JSON.parse(mainImg.dataset.allImages || '[]');
+    currentImages = imagesData;
+    const allThumbs = document.querySelectorAll('.gallery-thumb');
+    const activeThumb = document.querySelector('.gallery-thumb.border-indigo-500');
+    currentIndex = activeThumb ? Array.from(allThumbs).indexOf(activeThumb) : 0;
     showLightboxImage();
     lightbox.classList.remove('hidden');
     lightbox.classList.add('flex');
@@ -199,10 +204,9 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
   }
 
   function showLightboxImage() {
-    const img = currentImages[currentIndex];
-    lightboxImg.src = img.dataset.full;
-    lightboxImg.alt = img.dataset.alt;
-    lightboxCaption.textContent = img.dataset.alt;
+    lightboxImg.src = currentImages[currentIndex].url;
+    lightboxImg.alt = currentImages[currentIndex].alt[lang];
+    lightboxCaption.textContent = currentImages[currentIndex].alt[lang];
     lightboxPrev.classList.toggle('hidden', currentIndex === 0);
     lightboxNext.classList.toggle('hidden', currentIndex === currentImages.length - 1);
   }
@@ -262,13 +266,29 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
           <h4 class="text-lg font-semibold mb-4 flex items-center gap-2">
             <span>🖼️</span> ${translations.gallery[lang]}
           </h4>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            ${project.images.map(img => `
-              <div class="relative aspect-video rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 cursor-zoom-in">
-                <img src="${img.url}" alt="${img.alt[lang]}" class="w-full h-full object-contain" data-full="${img.url}" data-alt="${img.alt[lang]}" onclick="openLightbox(this)" />
-                <p class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/60 to-transparent text-white text-xs">${img.alt[lang]}</p>
-              </div>
-            `).join('')}
+          <div class="flex flex-col items-center gap-4">
+            <div class="relative w-full max-w-2xl aspect-video rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 group cursor-zoom-in" id="gallery-main">
+              <img id="gallery-main-img" data-all-images='${JSON.stringify(project.images)}' src="${project.images[0].url}" alt="${project.images[0].alt[lang]}" class="w-full h-full object-contain" />
+              ${project.images.length > 1 ? `
+              <button id="gallery-prev" class="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white/70 hover:text-white transition-colors opacity-0 group-hover:opacity-100">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+              </button>
+              <button id="gallery-next" class="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white/70 hover:text-white transition-colors opacity-0 group-hover:opacity-100">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </button>
+              ` : ''}
+            </div>
+            <div class="flex gap-2 overflow-x-auto pb-2 w-full max-w-2xl justify-center" id="gallery-thumbs">
+              ${project.images.map((img, i) => `
+                <button class="gallery-thumb flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-all ${i === 0 ? 'border-indigo-500 opacity-100' : 'border-transparent opacity-60 hover:opacity-80'}" data-index="${i}">
+                  <img src="${img.url}" alt="${img.alt[lang]}" class="w-full h-full object-contain" />
+                </button>
+              `).join('')}
+            </div>
           </div>
         </div>`;
       } else {
@@ -281,6 +301,30 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
       modalContent.innerHTML = html;
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
+
+      const galleryMainImg = document.getElementById('gallery-main-img');
+      if (galleryMainImg) {
+        const imagesData = JSON.parse(galleryMainImg.dataset.allImages || '[]');
+        let galleryIndex = 0;
+        const thumbs = document.querySelectorAll('.gallery-thumb');
+        const prevBtn = document.getElementById('gallery-prev');
+        const nextBtn = document.getElementById('gallery-next');
+        galleryMainImg.addEventListener('click', () => openLightbox(galleryMainImg));
+        function setGalleryImage(idx) {
+          galleryIndex = idx;
+          galleryMainImg.src = imagesData[idx].url;
+          galleryMainImg.alt = imagesData[idx].alt[lang];
+          thumbs.forEach((t, i) => {
+            t.classList.toggle('border-indigo-500', i === idx);
+            t.classList.toggle('opacity-100', i === idx);
+            t.classList.toggle('border-transparent', i !== idx);
+            t.classList.toggle('opacity-60', i !== idx);
+          });
+        }
+        thumbs.forEach(t => t.addEventListener('click', () => setGalleryImage(parseInt(t.dataset.index))));
+        if (prevBtn) prevBtn.addEventListener('click', e => { e.stopPropagation(); setGalleryImage((galleryIndex - 1 + imagesData.length) % imagesData.length); });
+        if (nextBtn) nextBtn.addEventListener('click', e => { e.stopPropagation(); setGalleryImage((galleryIndex + 1) % imagesData.length); });
+      }
     });
   });
   
@@ -292,7 +336,7 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
   
   modalClose.addEventListener('click', closeModal);
   modalBackdrop.addEventListener('click', closeModal);
-  
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
       closeModal();
