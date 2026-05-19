@@ -207,8 +207,6 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
     lightboxImg.src = currentImages[currentIndex].url;
     lightboxImg.alt = currentImages[currentIndex].alt[lang];
     lightboxCaption.textContent = currentImages[currentIndex].alt[lang];
-    lightboxPrev.classList.toggle('hidden', currentIndex === 0);
-    lightboxNext.classList.toggle('hidden', currentIndex === currentImages.length - 1);
   }
 
   function closeLightbox() {
@@ -217,20 +215,29 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
   }
 
   lightboxPrev.addEventListener('click', () => {
-    if (currentIndex > 0) { currentIndex--; showLightboxImage(); }
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    showLightboxImage(); 
   });
 
   lightboxNext.addEventListener('click', () => {
-    if (currentIndex < currentImages.length - 1) { currentIndex++; showLightboxImage(); }
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    showLightboxImage(); 
   });
+
 
   lightboxClose.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('hidden')) {
       if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft' && currentIndex > 0) { currentIndex--; showLightboxImage(); }
-      if (e.key === 'ArrowRight' && currentIndex < currentImages.length - 1) { currentIndex++; showLightboxImage(); }
+      if (e.key === 'ArrowLeft' ) { 
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        showLightboxImage(); 
+      }
+      if (e.key === 'ArrowRight') { 
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        showLightboxImage(); 
+      }
     }
   });
 
@@ -267,6 +274,7 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
             <span>🖼️</span> ${translations.gallery[lang]}
           </h4>
           <div class="flex flex-col items-center gap-4">
+            <p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed" id="image-caption"></p>
             <div class="relative w-full max-w-2xl aspect-video rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 group cursor-zoom-in" id="gallery-main">
               <img id="gallery-main-img" data-all-images='${JSON.stringify(project.images)}' src="${project.images[0].url}" alt="${project.images[0].alt[lang]}" class="w-full h-full object-contain" />
               ${project.images.length > 1 ? `
@@ -305,15 +313,20 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
       const galleryMainImg = document.getElementById('gallery-main-img');
       if (galleryMainImg) {
         const imagesData = JSON.parse(galleryMainImg.dataset.allImages || '[]');
-        let galleryIndex = 0;
         const thumbs = document.querySelectorAll('.gallery-thumb');
         const prevBtn = document.getElementById('gallery-prev');
         const nextBtn = document.getElementById('gallery-next');
+        const imageCaption = document.getElementById('image-caption');
         galleryMainImg.addEventListener('click', () => openLightbox(galleryMainImg));
         function setGalleryImage(idx) {
-          galleryIndex = idx;
-          galleryMainImg.src = imagesData[idx].url;
-          galleryMainImg.alt = imagesData[idx].alt[lang];
+          currentIndex = idx;
+          const imgData = imagesData[idx];
+          galleryMainImg.src = imgData.url;
+          galleryMainImg.alt = imgData.alt?.[lang] || '';
+          if (imageCaption) {
+            const altText = imgData.alt?.[lang] || `Image ${idx + 1} of ${imagesData.length}`;
+            imageCaption.textContent = altText;
+          }
           thumbs.forEach((t, i) => {
             t.classList.toggle('border-indigo-500', i === idx);
             t.classList.toggle('opacity-100', i === idx);
@@ -322,8 +335,9 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
           });
         }
         thumbs.forEach(t => t.addEventListener('click', () => setGalleryImage(parseInt(t.dataset.index))));
-        if (prevBtn) prevBtn.addEventListener('click', e => { e.stopPropagation(); setGalleryImage((galleryIndex - 1 + imagesData.length) % imagesData.length); });
-        if (nextBtn) nextBtn.addEventListener('click', e => { e.stopPropagation(); setGalleryImage((galleryIndex + 1) % imagesData.length); });
+        if (prevBtn) prevBtn.addEventListener('click', e => { e.stopPropagation(); setGalleryImage((currentIndex - 1 + imagesData.length) % imagesData.length); });
+        if (nextBtn) nextBtn.addEventListener('click', e => { e.stopPropagation(); setGalleryImage((currentIndex + 1) % imagesData.length); });
+        setGalleryImage(0);
       }
     });
   });
