@@ -214,6 +214,7 @@ function updateGalleryView() {
     const galleryMainImg = document.getElementById('gallery-main-img');
     const thumbs = document.querySelectorAll('.gallery-thumb');
     const imageCaption = document.getElementById('image-caption');
+    const galleryCounter = document.getElementById('gallery-counter-text');
     if (lightboxImg) {
       lightboxImg.src = imageBasePath + imgData.url;
       lightboxImg.alt = caption;
@@ -227,6 +228,9 @@ function updateGalleryView() {
     }
     if (imageCaption) {
       imageCaption.textContent = captionTranslation || `Image ${currentIndex + 1} of ${currentImages.length}`;
+    }
+    if (galleryCounter) {
+      galleryCounter.textContent = `${currentIndex + 1}/${currentImages.length}`;
     }
     thumbs.forEach((t, i) => {
       t.classList.toggle('border-indigo-500', i === currentIndex);
@@ -303,8 +307,8 @@ function updateGalleryView() {
           <div class="flex flex-col items-center gap-4">
             <p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed" id="image-caption"></p>
             <div class="relative w-full max-w-2xl aspect-video rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 group cursor-zoom-in" id="gallery-main">
-              <div class="absolute inset-0 pointer-events-none">
-                <p>1/11</p>
+              <div class="absolute bottom-2 right-2" id="gallery-counter">
+                <p class="px-2 py-1 rounded bg-black/50 text-white text-xs font-medium" id="gallery-counter-text">1/1</p>
               </div>
               <img id="gallery-main-img" data-all-images='${JSON.stringify(project.images)}' src="${imageBasePath + project.images[0].url}" alt="${project.images[0].alt}" class="w-full h-full object-contain" />
               ${project.images.length > 1 ? `
@@ -346,16 +350,20 @@ function updateGalleryView() {
         const thumbs = document.querySelectorAll('.gallery-thumb');
         const prevBtn = document.getElementById('gallery-prev');
         const nextBtn = document.getElementById('gallery-next');
-        const imageCaption = document.getElementById('image-caption');
         galleryMainImg.addEventListener('click', () => openLightbox(galleryMainImg));
         function setGalleryImage(idx) {
           currentIndex = idx;
           const imgData = currentImages[idx];
           galleryMainImg.src = imageBasePath + imgData.url;
           galleryMainImg.alt = imgData.alt || '';
+          const imageCaption = document.getElementById('image-caption');
+          const galleryCounter = document.getElementById('gallery-counter-text');
           if (imageCaption) {
             const altText = imgData.alt?.[lang] || `Image ${idx + 1} of ${currentImages.length}`;
             imageCaption.textContent = altText;
+          }
+          if (galleryCounter) {
+            galleryCounter.textContent = `${idx + 1}/${currentImages.length}`;
           }
           thumbs.forEach((t, i) => {
             t.classList.toggle('border-indigo-500', i === idx);
