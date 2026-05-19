@@ -15,10 +15,8 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="animate-on-scroll">
       <div class="flex items-center gap-4 mb-4">
-        <span class="text-4xl">🚀</span>
         <h2 class="text-3xl font-bold">{t.projects.title}</h2>
       </div>
-      <p class="text-gray-600 dark:text-gray-400 mb-12 ml-12">{t.projects.subtitle}</p>
       {sortedProjects.length === 0 ? (
         <h3 class="text-xl font-semibold mb-6">{t.todo.section}</h3>
       ) : (
@@ -284,7 +282,7 @@ function updateGalleryView() {
         const descParagraphs = project.description[lang].split('\n\n');
         html += `<div class="mb-8">
           <h4 class="text-lg font-semibold mb-4 flex items-center gap-2">
-            <span>📝</span> ${translations.description}
+            ${translations.description}
           </h4>
           ${descParagraphs.map(p => `<p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">${p}</p>`).join('')}
         </div>`;
@@ -292,7 +290,7 @@ function updateGalleryView() {
 
       html += `<div class="mb-8">
         <h4 class="text-lg font-semibold mb-4 flex items-center gap-2">
-          <span>⚡</span> ${translations.technologies}
+          ${translations.technologies}
         </h4>
         <div class="flex flex-wrap gap-2">
           ${project.tags.map(tag => `<span class="px-4 py-2 rounded-lg text-sm font-medium bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300">${tag}</span>`).join('')}
@@ -302,11 +300,11 @@ function updateGalleryView() {
       if (project.images && project.images.length > 0) {
         html += `<div>
           <h4 class="text-lg font-semibold mb-4 flex items-center gap-2">
-            <span>🖼️</span> ${translations.gallery}
+             ${translations.gallery}
           </h4>
           <div class="flex flex-col items-center gap-4">
             <p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed" id="image-caption"></p>
-            <div class="relative w-full max-w-2xl aspect-video rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 group cursor-zoom-in" id="gallery-main">
+            <div class="relative w-full max-w-6xl aspect-video rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 group cursor-zoom-in" id="gallery-main">
               <div class="absolute bottom-2 right-2" id="gallery-counter">
                 <p class="px-2 py-1 rounded bg-black/50 text-white text-xs font-medium" id="gallery-counter-text">1/1</p>
               </div>
@@ -324,7 +322,7 @@ function updateGalleryView() {
               </button>
               ` : ''}
             </div>
-            <div class="flex gap-2 overflow-x-auto pb-2 w-full max-w-2xl justify-start snap-x snap-mandatory" id="gallery-thumbs">
+            <div class="flex gap-2 overflow-x-auto pb-2 w-full max-w-6xl justify-center snap-x snap-mandatory" id="gallery-thumbs">
               ${project.images.map((img, i) => `
                 <button class="gallery-thumb flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-all snap-start ${i === 0 ? 'border-indigo-500 opacity-100' : 'border-transparent opacity-60 hover:opacity-80'}" data-index="${i}">
                   <img src="${imageBasePath + img.url}" alt="${img.alt}" class="w-full h-full object-contain" />
