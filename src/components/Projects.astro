@@ -312,7 +312,7 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
 
       const galleryMainImg = document.getElementById('gallery-main-img');
       if (galleryMainImg) {
-        const imagesData = JSON.parse(galleryMainImg.dataset.allImages || '[]');
+        currentImages = JSON.parse(galleryMainImg.dataset.allImages || '[]');
         const thumbs = document.querySelectorAll('.gallery-thumb');
         const prevBtn = document.getElementById('gallery-prev');
         const nextBtn = document.getElementById('gallery-next');
@@ -320,11 +320,11 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
         galleryMainImg.addEventListener('click', () => openLightbox(galleryMainImg));
         function setGalleryImage(idx) {
           currentIndex = idx;
-          const imgData = imagesData[idx];
+          const imgData = currentImages[idx];
           galleryMainImg.src = imgData.url;
           galleryMainImg.alt = imgData.alt?.[lang] || '';
           if (imageCaption) {
-            const altText = imgData.alt?.[lang] || `Image ${idx + 1} of ${imagesData.length}`;
+            const altText = imgData.alt?.[lang] || `Image ${idx + 1} of ${currentImages.length}`;
             imageCaption.textContent = altText;
           }
           thumbs.forEach((t, i) => {
@@ -335,8 +335,8 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
           });
         }
         thumbs.forEach(t => t.addEventListener('click', () => setGalleryImage(parseInt(t.dataset.index))));
-        if (prevBtn) prevBtn.addEventListener('click', e => { e.stopPropagation(); setGalleryImage((currentIndex - 1 + imagesData.length) % imagesData.length); });
-        if (nextBtn) nextBtn.addEventListener('click', e => { e.stopPropagation(); setGalleryImage((currentIndex + 1) % imagesData.length); });
+        if (prevBtn) prevBtn.addEventListener('click', e => { e.stopPropagation(); setGalleryImage((currentIndex - 1 + currentImages.length) % currentImages.length); });
+        if (nextBtn) nextBtn.addEventListener('click', e => { e.stopPropagation(); setGalleryImage((currentIndex + 1) % currentImages.length); });
         setGalleryImage(0);
       }
     });
