@@ -24,7 +24,7 @@ export const config = {
     ca: "Desenvolupador Fullstack amb una forta especialització en backend. Em dedico a dissenyar arquitectures eficients, bases de dades optimitzades i APIs d'alt rendiment. Complemento aquesta experiència amb l'habilitat de crear el frontend d'aplicacions web modernes, garantint interfícies fluides, interactives i centrades en l'usuari.",
   },
   stack: {
-    Frontend: ["Angular", "Astro", "JetPackCompose", "Tailwind CSS"],
+    Frontend: ["Angular", "Astro", "Jetpack Compose", "Tailwind CSS"],
     Backend: ["SpringBoot", "NestJS", "ASP.NET Core", "SQL/NoSQL"],
     DevOps: ["Docker", "GitHub Actions", "Google Cloud"],
     Methodologies: ["Scrum", "TDD", "SDD", "AI-Driven Development"],

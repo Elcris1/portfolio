@@ -12,12 +12,16 @@ export function useTranslations(lang: Language) {
 
 export const languages = Object.keys(translations) as Language[]
 
+export function basePath(): string {
+  return import.meta.env.BASE_URL || ""
+  
+}
 export function getBasePath(): string {
   return import.meta.env.BASE_URL || '/'
 }
 
 export function getPath(lang: Language, path: string = ""): string {
-  const base = getBasePath()
+  const base = basePath()
   const baseWithoutSlash = base.endsWith('/') ? base.slice(0, -1) : base
   return `${baseWithoutSlash}/${lang}${path}`
 }
