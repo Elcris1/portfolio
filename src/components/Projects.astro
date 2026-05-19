@@ -2,10 +2,11 @@
 import { config } from '../data/config'
 import type { Language } from '../i18n/translations'
 import { projects, type Project } from '../data/projects'
-import { getLangFromUrl, useTranslations } from '../i18n/utils'
+import { basePath, getLangFromUrl, useTranslations } from '../i18n/utils'
 
 const lang = getLangFromUrl(Astro.url) as Language
 const t = useTranslations(lang)
+const imageBasePath = basePath() + ""
 
 const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(a.featured))
 ---
@@ -33,10 +34,10 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
               )}
               
               <div class="relative aspect-video overflow-hidden bg-gradient-to-br from-indigo-500/20 to-violet-500/20 dark:from-indigo-900/30 dark:to-violet-900/30">
-                {project.images && project.images.length > 0 ? (
+                {project.mainImage ? (
                   <img 
-                    src={project.images[0].url} 
-                    alt={project.images[0].alt[lang]}
+                    src={imageBasePath + project.mainImage.url} 
+                    alt={project.mainImage.alt[lang]}
                     class="w-full h-full object-contain"
                     onerror="this.style.display='none'; this.parentElement.querySelector('.placeholder').style.display='flex';"
                   />
@@ -172,7 +173,15 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
   </button>
 </div>
 
-<script define:vars={{ translations: { description: { es: "Descripción", en: "Description", ca: "Descripció" }, technologies: { es: "Tecnologías", en: "Technologies", ca: "Tecnologies" }, gallery: { es: "Galería", en: "Gallery", ca: "Galeria" }, noImages: { es: "No hay imágenes disponibles", en: "No images available", ca: "No hi ha imatges disponibles" } } }}>
+<script define:vars={{ 
+  imageBasePath: imageBasePath,
+  translations: { 
+    description: { es: "Descripción", en: "Description", ca: "Descripció" }, 
+    technologies: { es: "Tecnologías", en: "Technologies", ca: "Tecnologies" }, 
+    gallery: { es: "Galería", en: "Gallery", ca: "Galeria" }, 
+    noImages: { es: "No hay imágenes disponibles", en: "No images available", ca: "No hi ha imatges disponibles" } 
+    } 
+  }}>
   const lang = window.location.pathname.split('/')[1] || 'es';
   const modal = document.getElementById('project-modal');
   const modalTitle = document.getElementById('modal-title');
@@ -205,21 +214,21 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
 
 function showLightboxImage() {
     const imgData = currentImages[currentIndex];
-    lightboxImg.src = imgData.url;
+    lightboxImg.src = imageBasePath + imgData.url;
     lightboxImg.alt = imgData.alt?.[lang] || '';
-    lightboxCaption.textContent = imgData.alt?.[lang] || '';
-    lightboxPrev.classList.toggle('hidden', currentIndex === 0);
-    lightboxNext.classList.toggle('hidden', currentIndex === currentImages.length - 1);
+    const captionTranslation = imgData.alt?.[lang] 
+    const caption = captionTranslation ? captionTranslation + ` - ${currentIndex + 1}/${currentImages.length}` : `Image ${currentIndex + 1} of ${currentImages.length}`;
+    lightboxCaption.textContent = caption
 
     const galleryMainImg = document.getElementById('gallery-main-img');
     const thumbs = document.querySelectorAll('.gallery-thumb');
     const imageCaption = document.getElementById('image-caption');
     if (galleryMainImg) {
-      galleryMainImg.src = imgData.url;
-      galleryMainImg.alt = imgData.alt?.[lang] || '';
+      galleryMainImg.src = imageBasePath + imgData.url;
+      galleryMainImg.alt = caption
     }
     if (imageCaption) {
-      imageCaption.textContent = imgData.alt?.[lang] || `Image ${currentIndex + 1} of ${currentImages.length}`;
+      imageCaption.textContent = captionTranslation || `Image ${currentIndex + 1} of ${currentImages.length}`;
     }
     thumbs.forEach((t, i) => {
       t.classList.toggle('border-indigo-500', i === currentIndex);
@@ -296,7 +305,10 @@ function showLightboxImage() {
           <div class="flex flex-col items-center gap-4">
             <p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed" id="image-caption"></p>
             <div class="relative w-full max-w-2xl aspect-video rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 group cursor-zoom-in" id="gallery-main">
-              <img id="gallery-main-img" data-all-images='${JSON.stringify(project.images)}' src="${project.images[0].url}" alt="${project.images[0].alt[lang]}" class="w-full h-full object-contain" />
+              <div class="absolute inset-0 pointer-events-none">
+                <p>1/11</p>  
+              </div>
+              <img id="gallery-main-img" data-all-images='${JSON.stringify(project.images)}' src="${imageBasePath + project.images[0].url}" alt="${project.images[0].alt[lang]}" class="w-full h-full object-contain" />
               ${project.images.length > 1 ? `
               <button id="gallery-prev" class="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white/70 hover:text-white transition-colors opacity-0 group-hover:opacity-100">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -310,10 +322,10 @@ function showLightboxImage() {
               </button>
               ` : ''}
             </div>
-            <div class="flex gap-2 overflow-x-auto pb-2 w-full max-w-2xl justify-center" id="gallery-thumbs">
+            <div class="flex gap-2 overflow-x-auto pb-2 w-full max-w-2xl justify-start snap-x snap-mandatory" id="gallery-thumbs">
               ${project.images.map((img, i) => `
-                <button class="gallery-thumb flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-all ${i === 0 ? 'border-indigo-500 opacity-100' : 'border-transparent opacity-60 hover:opacity-80'}" data-index="${i}">
-                  <img src="${img.url}" alt="${img.alt[lang]}" class="w-full h-full object-contain" />
+                <button class="gallery-thumb flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-all snap-start ${i === 0 ? 'border-indigo-500 opacity-100' : 'border-transparent opacity-60 hover:opacity-80'}" data-index="${i}">
+                  <img src="${imageBasePath + img.url}" alt="${img.alt[lang]}" class="w-full h-full object-contain" />
                 </button>
               `).join('')}
             </div>
@@ -341,7 +353,7 @@ function showLightboxImage() {
         function setGalleryImage(idx) {
           currentIndex = idx;
           const imgData = currentImages[idx];
-          galleryMainImg.src = imgData.url;
+          galleryMainImg.src = imageBasePath + imgData.url;
           galleryMainImg.alt = imgData.alt?.[lang] || '';
           if (imageCaption) {
             const altText = imgData.alt?.[lang] || `Image ${idx + 1} of ${currentImages.length}`;
