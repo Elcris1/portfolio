@@ -13,7 +13,11 @@ export function useTranslations(lang: Language) {
 export const languages = Object.keys(translations) as Language[]
 
 export function basePath(): string {
-  return import.meta.env.BASE_URL || ""
+  let basePath = import.meta.env.BASE_URL || ""
+  if (!basePath.endsWith('/')) {
+    basePath += '/'
+  }
+  return basePath || ""
   
 }
 export function getBasePath(): string {
