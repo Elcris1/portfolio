@@ -175,14 +175,9 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
 
 <script define:vars={{ 
   imageBasePath: imageBasePath,
-  translations: { 
-    description: { es: "Descripción", en: "Description", ca: "Descripció" }, 
-    technologies: { es: "Tecnologías", en: "Technologies", ca: "Tecnologies" }, 
-    gallery: { es: "Galería", en: "Gallery", ca: "Galeria" }, 
-    noImages: { es: "No hay imágenes disponibles", en: "No images available", ca: "No hi ha imatges disponibles" } 
-    } 
-  }}>
-  const lang = window.location.pathname.split('/')[1] || 'es';
+  lang: lang,
+  translations: t.gallery
+}}>
   const modal = document.getElementById('project-modal');
   const modalTitle = document.getElementById('modal-title');
   const modalContent = document.getElementById('modal-content');
@@ -206,26 +201,29 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(
     const allThumbs = document.querySelectorAll('.gallery-thumb');
     const activeThumb = document.querySelector('.gallery-thumb.border-indigo-500');
     currentIndex = activeThumb ? Array.from(allThumbs).indexOf(activeThumb) : 0;
-    showLightboxImage();
+    updateGalleryView();
     lightbox.classList.remove('hidden');
     lightbox.classList.add('flex');
     document.body.style.overflow = 'hidden';
   }
 
-function showLightboxImage() {
+function updateGalleryView() {
     const imgData = currentImages[currentIndex];
-    lightboxImg.src = imageBasePath + imgData.url;
-    lightboxImg.alt = imgData.alt?.[lang] || '';
-    const captionTranslation = imgData.alt?.[lang] 
+    const captionTranslation = imgData.alt?.[lang]
     const caption = captionTranslation ? captionTranslation + ` - ${currentIndex + 1}/${currentImages.length}` : `Image ${currentIndex + 1} of ${currentImages.length}`;
-    lightboxCaption.textContent = caption
-
     const galleryMainImg = document.getElementById('gallery-main-img');
     const thumbs = document.querySelectorAll('.gallery-thumb');
     const imageCaption = document.getElementById('image-caption');
+    if (lightboxImg) {
+      lightboxImg.src = imageBasePath + imgData.url;
+      lightboxImg.alt = caption;
+    }
+    if (lightboxCaption) {
+      lightboxCaption.textContent = caption;
+    }
     if (galleryMainImg) {
       galleryMainImg.src = imageBasePath + imgData.url;
-      galleryMainImg.alt = caption
+      galleryMainImg.alt = caption;
     }
     if (imageCaption) {
       imageCaption.textContent = captionTranslation || `Image ${currentIndex + 1} of ${currentImages.length}`;
@@ -245,12 +243,12 @@ function showLightboxImage() {
 
   lightboxPrev.addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-    showLightboxImage(); 
+    updateGalleryView();
   });
 
   lightboxNext.addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % currentImages.length;
-    showLightboxImage(); 
+    updateGalleryView();
   });
 
 
@@ -259,13 +257,13 @@ function showLightboxImage() {
   document.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('hidden')) {
       if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft' ) { 
+      if (e.key === 'ArrowLeft' ) {
         currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-        showLightboxImage(); 
+        updateGalleryView();
       }
-      if (e.key === 'ArrowRight') { 
+      if (e.key === 'ArrowRight') {
         currentIndex = (currentIndex + 1) % currentImages.length;
-        showLightboxImage(); 
+        updateGalleryView();
       }
     }
   });
@@ -273,42 +271,42 @@ function showLightboxImage() {
   document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('click', () => {
       const project = JSON.parse(card.dataset.project);
-      
+
       modalTitle.textContent = project.title[lang];
-      
+
       let html = '';
-      
+
       if (project.description && project.description[lang]) {
         const descParagraphs = project.description[lang].split('\n\n');
         html += `<div class="mb-8">
           <h4 class="text-lg font-semibold mb-4 flex items-center gap-2">
-            <span>📝</span> ${translations.description[lang]}
+            <span>📝</span> ${translations.description}
           </h4>
           ${descParagraphs.map(p => `<p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">${p}</p>`).join('')}
         </div>`;
       }
-      
+
       html += `<div class="mb-8">
         <h4 class="text-lg font-semibold mb-4 flex items-center gap-2">
-          <span>⚡</span> ${translations.technologies[lang]}
+          <span>⚡</span> ${translations.technologies}
         </h4>
         <div class="flex flex-wrap gap-2">
           ${project.tags.map(tag => `<span class="px-4 py-2 rounded-lg text-sm font-medium bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300">${tag}</span>`).join('')}
         </div>
       </div>`;
-      
+
       if (project.images && project.images.length > 0) {
         html += `<div>
           <h4 class="text-lg font-semibold mb-4 flex items-center gap-2">
-            <span>🖼️</span> ${translations.gallery[lang]}
+            <span>🖼️</span> ${translations.gallery}
           </h4>
           <div class="flex flex-col items-center gap-4">
             <p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed" id="image-caption"></p>
             <div class="relative w-full max-w-2xl aspect-video rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 group cursor-zoom-in" id="gallery-main">
               <div class="absolute inset-0 pointer-events-none">
-                <p>1/11</p>  
+                <p>1/11</p>
               </div>
-              <img id="gallery-main-img" data-all-images='${JSON.stringify(project.images)}' src="${imageBasePath + project.images[0].url}" alt="${project.images[0].alt[lang]}" class="w-full h-full object-contain" />
+              <img id="gallery-main-img" data-all-images='${JSON.stringify(project.images)}' src="${imageBasePath + project.images[0].url}" alt="${project.images[0].alt}" class="w-full h-full object-contain" />
               ${project.images.length > 1 ? `
               <button id="gallery-prev" class="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white/70 hover:text-white transition-colors opacity-0 group-hover:opacity-100">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -325,7 +323,7 @@ function showLightboxImage() {
             <div class="flex gap-2 overflow-x-auto pb-2 w-full max-w-2xl justify-start snap-x snap-mandatory" id="gallery-thumbs">
               ${project.images.map((img, i) => `
                 <button class="gallery-thumb flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-all snap-start ${i === 0 ? 'border-indigo-500 opacity-100' : 'border-transparent opacity-60 hover:opacity-80'}" data-index="${i}">
-                  <img src="${imageBasePath + img.url}" alt="${img.alt[lang]}" class="w-full h-full object-contain" />
+                  <img src="${imageBasePath + img.url}" alt="${img.alt}" class="w-full h-full object-contain" />
                 </button>
               `).join('')}
             </div>
@@ -334,10 +332,10 @@ function showLightboxImage() {
       } else {
         html += `<div class="text-center py-8 text-gray-400">
           <span class="text-4xl mb-2 block">📭</span>
-          ${translations.noImages[lang]}
+          ${translations.noImages}
         </div>`;
       }
-      
+
       modalContent.innerHTML = html;
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
@@ -354,7 +352,7 @@ function showLightboxImage() {
           currentIndex = idx;
           const imgData = currentImages[idx];
           galleryMainImg.src = imageBasePath + imgData.url;
-          galleryMainImg.alt = imgData.alt?.[lang] || '';
+          galleryMainImg.alt = imgData.alt || '';
           if (imageCaption) {
             const altText = imgData.alt?.[lang] || `Image ${idx + 1} of ${currentImages.length}`;
             imageCaption.textContent = altText;

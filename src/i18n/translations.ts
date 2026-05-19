@@ -47,6 +47,12 @@ export const translations = {
       description: "Estoy trabajando en esta sección. Mientras tanto, puedes echar un vistazo a mis proyectos o contactarme.",
       section: "Esta sección está en construcción"
     },
+    gallery: {
+      description:  "Descripción", 
+      technologies: "Tecnologías", 
+      gallery:  "Galería",
+      noImages: "No hay imágenes disponibles" 
+    }
   },
   en: {
     nav: {
@@ -94,6 +100,12 @@ export const translations = {
       description: "I'm working on this section. In the meantime, you can take a look at my projects or contact me.",
       section: "This section is under construction"
     },
+    gallery: {
+      description: "Description",
+      technologies: "Technologies",
+      gallery: "Gallery",
+      noImages: "No images available"
+    }
   },
   ca: {
     nav: {
@@ -141,6 +153,12 @@ export const translations = {
       description: "Estic treballant en aquesta secció. Mentrestant, pots fer un cop d'ull als meus projectes o contactar-me.",
       section: "Aquesta secció està en construcció"
     },
+    gallery: {
+      description: "Descripció",
+      technologies: "Tecnologies",
+      gallery: "Galeria",
+      noImages: "No hi ha imatges disponibles"
+    }
   },
 } as const
 
