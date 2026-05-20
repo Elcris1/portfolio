@@ -21,6 +21,7 @@ export const translations = {
       title: "Carrera",
       work: "Trabajo",
       education: "Educación",
+      present: "Actualidad"
     },
     projects: {
       title: "Proyectos",
@@ -75,6 +76,7 @@ export const translations = {
       title: "Career",
       work: "Work",
       education: "Education",
+      present: "Present"
     },
     projects: {
       title: "Projects",
@@ -129,6 +131,7 @@ export const translations = {
       title: "Carrera",
       work: "Treball",
       education: "Educació",
+      present: "Actualitat"
     },
     projects: {
       title: "Projectes",

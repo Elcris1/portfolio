@@ -61,9 +61,9 @@ export const career: CareerItem[] = [
   {
     type: "work",
     title: {
-      es: "Junior Fullstack Developer de prácticas",
+      es: "Junior Fullstack Developer - Prácticas Curriculares",
       en: "Junior Fullstack Developer Internship",
-      ca: "Desenvolupador Fullstack Junior de pràctiques",
+      ca: "Desenvolupador Fullstack Junior - Pràctiques Curriculars",
     },
     organization: "Hiberus",
     period: "06/2025 — 08/2025",
@@ -78,9 +78,9 @@ export const career: CareerItem[] = [
   {
     type: "work",
     title: {
-      es: "Junior Fullstack Developer de prácticas",
+      es: "Junior Fullstack Developer - Prácticas Extracurriculares",
       en: "Junior Fullstack Developer Internship",
-      ca: "Desenvolupador Fullstack Junior de pràctiques",
+      ca: "Desenvolupador Fullstack Junior - Pràctiques Extracurriculars",
     },
     organization: "Hiberus",
     period: "04/2026 — ",
