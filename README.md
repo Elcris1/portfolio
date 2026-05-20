@@ -78,4 +78,4 @@ Edit `src/i18n/translations.ts` to translate:
 
 The project is configured for static deployment. Build with `pnpm build` and deploy to any static hosting service (Vercel, Netlify, GitHub Pages, etc.).
 
-GitHub Actions workflow is included for automatic deployment on push to `main`.
+GitHub Actions workflow is included for automatic deployment on push to `master`.

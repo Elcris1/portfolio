@@ -2,7 +2,8 @@
 
 ## Stack
 - **Framework**: Astro (static site)
-- **Package manager**: pnpm
+- **Package manager**: pnpm 11+
+- **Runtime**: Node 22+
 - **Styling**: Tailwind CSS v3 (`@astrojs/tailwind`)
 - **Language**: TypeScript
 
@@ -13,7 +14,7 @@ pnpm build   # Production build
 ```
 
 ## Deployment
-- GitHub Actions auto-deploys on push to `main`
+- GitHub Actions auto-deploys on push to `master`
 - Workflow creates `.env` with `ENV=prod` for production build
 - Config uses `site` and `base` only when `ENV=prod`
 
