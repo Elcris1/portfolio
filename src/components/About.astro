@@ -1,10 +1,11 @@
 ---
 import { config } from '../data/config'
 import type { Language } from '../i18n/translations'
-import { getLangFromUrl, useTranslations } from '../i18n/utils'
+import { getLangFromUrl, useTranslations, basePath } from '../i18n/utils'
 
 const lang = getLangFromUrl(Astro.url) as Language
 const t = useTranslations(lang)
+const imageBasePath = basePath() + ""
 
 const initials = config.name.split(' ').map(n => n[0]).join('').toUpperCase()
 ---
@@ -56,26 +57,88 @@ const initials = config.name.split(' ').map(n => n[0]).join('').toUpperCase()
               {config.about[lang]}
             </p>
           </div>
-          
-          <div>
-            <h3 class="text-xl font-semibold mb-6 flex items-center gap-2">
-              <span>⚡</span> Stack
-            </h3>
-            <div class="grid sm:grid-cols-2 gap-6">
-              {Object.entries(config.stack).map(([category, technologies]) => (
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-100 dark:border-gray-700">
-                  <p class="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-3">{category}</p>
-                  <div class="flex flex-wrap gap-2">
-                    {technologies.map((tech) => (
-                      <span class="px-3 py-1.5 rounded-lg text-sm font-medium bg-gray-100 dark:bg-gray-700 hover:bg-indigo-100 dark:hover:bg-indigo-900/30 transition-colors">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
+
+          {config.languages && config.languages.length > 0 && (
+            <div>
+              <h3 class="text-xl font-semibold mb-6 flex items-center gap-2">
+                <span>🌐</span> {t.about.languagesTitle}
+              </h3>
+              <div class="grid sm:grid-cols-2 gap-4">
+                {config.languages.map((langItem) => {
+                  const badgeColors = {
+                    native: "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400",
+                    certified: "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300",
+                    learning: "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400",
+                  }
+                  return (
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700 hover:shadow-lg hover:shadow-indigo-500/10 transition-all duration-300">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center text-white font-bold text-sm">
+                          {langItem.shortName}
+                        </div>
+                        <div class="flex-1">
+                          <div class="flex items-center justify-between flex-wrap gap-2">
+                            <p class="font-semibold text-gray-800 dark:text-gray-200">{langItem.name[lang]}</p>
+                            <div class="flex items-center gap-2">
+                              <span class={`px-2 py-0.5 rounded-full text-xs font-bold ${badgeColors[langItem.badge as keyof typeof badgeColors] || badgeColors.certified}`}>
+                                {langItem.level[lang]}
+                              </span>
+                            </div>
+                          </div>
+                          {langItem.certification && (
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 flex items-center gap-1">
+                              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                              </svg>
+                              {langItem.certification}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
             </div>
-          </div>
+          )}
+        </div>
+      </div>
+
+      <div class="mt-12">
+        <h3 class="text-xl font-semibold mb-6 flex items-center gap-2">
+          <span>⚡</span> {t.about.stackTitle}
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          {Object.entries(config.stack).map(([category, technologies]) => (
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:shadow-indigo-500/10 hover:border-indigo-200 dark:hover:border-indigo-800 transition-all duration-300 group">
+              <div class="flex items-center gap-3 mb-4">
+                <p class="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide">
+                  {category}
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-2.5">
+                {technologies.map((tech) => (
+                  <div class="group/tech relative">
+                    {tech.icon ? (
+                      <div class="w-12 h-12 rounded-xl bg-gray-50 dark:bg-gray-700/50 flex items-center justify-center p-2 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 hover:shadow-lg hover:shadow-indigo-500/20 hover:scale-110 transition-all duration-300 cursor-pointer border border-transparent hover:border-indigo-200 dark:hover:border-indigo-700" title={tech.name}>
+                        <img 
+                          src={tech.icon.indexOf('/') != -1 ? imageBasePath + tech.icon : `https://cdn.simpleicons.org/${tech.icon}/4f46e5/FFFFFF`}
+                          alt={tech.name}
+                          class="w-full h-full object-contain group-hover/tech:scale-110 transition-all duration-300"
+                        />
+                      </div>
+                    ) : (
+                      <div class="px-3.5 py-2 rounded-lg bg-gray-100 dark:bg-gray-700/50 hover:bg-indigo-100 dark:hover:bg-indigo-900/30 hover:shadow-md hover:shadow-indigo-500/20 transition-all duration-300 cursor-pointer border border-transparent hover:border-indigo-200 dark:hover:border-indigo-700">
+                        <span class="text-sm font-medium text-gray-600 dark:text-gray-400 group-hover/tech:text-indigo-600 dark:group-hover/tech:text-indigo-400 transition-colors">
+                          {tech.name}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

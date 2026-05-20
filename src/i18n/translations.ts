@@ -16,11 +16,15 @@ export const translations = {
     about: {
       title: "Sobre mí",
       location: "Ubicación",
+      languagesTitle: "Idiomas",
+      certification: "Certificación",
+      stackTitle: "Stack Tecnológico",
     },
     career: {
       title: "Carrera",
       work: "Trabajo",
       education: "Educación",
+      present: "Actualidad"
     },
     projects: {
       title: "Proyectos",
@@ -50,6 +54,7 @@ export const translations = {
     gallery: {
       description:  "Descripción", 
       technologies: "Tecnologías", 
+      links: "Enlaces",
       gallery:  "Galería",
       noImages: "No hay imágenes disponibles" 
     }
@@ -69,11 +74,15 @@ export const translations = {
     about: {
       title: "About",
       location: "Location",
+      languagesTitle: "Languages",
+      certification: "Certification",
+      stackTitle: "Tech Stack",
     },
     career: {
       title: "Career",
       work: "Work",
       education: "Education",
+      present: "Present"
     },
     projects: {
       title: "Projects",
@@ -103,6 +112,7 @@ export const translations = {
     gallery: {
       description: "Description",
       technologies: "Technologies",
+      links: "Links",
       gallery: "Gallery",
       noImages: "No images available"
     }
@@ -122,11 +132,15 @@ export const translations = {
     about: {
       title: "Sobre mi",
       location: "Ubicació",
+      languagesTitle: "Idiomes",
+      certification: "Certificació",
+      stackTitle: "Stack Tecnològic",
     },
     career: {
       title: "Carrera",
       work: "Treball",
       education: "Educació",
+      present: "Actualitat"
     },
     projects: {
       title: "Projectes",
@@ -156,6 +170,7 @@ export const translations = {
     gallery: {
       description: "Descripció",
       technologies: "Tecnologies",
+      links: "Enllaços",
       gallery: "Galeria",
       noImages: "No hi ha imatges disponibles"
     }

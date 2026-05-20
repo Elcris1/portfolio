@@ -67,3 +67,9 @@ Must use **Tailwind v3** (not v4) for `@astrojs/tailwind` compatibility:
 - Projects have modal with detailed description and gallery (click to open)
 - Private projects (`private: true`) hide repo/demo links
 - Images go in `public/projects/[name]/[file].jpg`
+
+## Modification Guidelines
+- Only modify the specific scope mentioned in the request; do not alter unrelated code
+- When editing code, preserve existing indentation, style, and conventions
+- Do not add comments unless explicitly requested
+- Keep changes minimal and focused on the exact request
