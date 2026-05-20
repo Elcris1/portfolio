@@ -1,10 +1,11 @@
 ---
 import { config } from '../data/config'
 import type { Language } from '../i18n/translations'
-import { getLangFromUrl, useTranslations } from '../i18n/utils'
+import { getLangFromUrl, useTranslations, basePath } from '../i18n/utils'
 
 const lang = getLangFromUrl(Astro.url) as Language
 const t = useTranslations(lang)
+const imageBasePath = basePath() + ""
 
 const initials = config.name.split(' ').map(n => n[0]).join('').toUpperCase()
 ---
@@ -121,7 +122,7 @@ const initials = config.name.split(' ').map(n => n[0]).join('').toUpperCase()
                     {tech.icon ? (
                       <div class="w-12 h-12 rounded-xl bg-gray-50 dark:bg-gray-700/50 flex items-center justify-center p-2 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 hover:shadow-lg hover:shadow-indigo-500/20 hover:scale-110 transition-all duration-300 cursor-pointer border border-transparent hover:border-indigo-200 dark:hover:border-indigo-700" title={tech.name}>
                         <img 
-                          src={tech.icon.startsWith('/') ? tech.icon : `https://cdn.simpleicons.org/${tech.icon}/4f46e5/FFFFFF`}
+                          src={tech.icon.indexOf('/') != -1 ? imageBasePath + tech.icon : `https://cdn.simpleicons.org/${tech.icon}/4f46e5/FFFFFF`}
                           alt={tech.name}
                           class="w-full h-full object-contain group-hover/tech:scale-110 transition-all duration-300"
                         />
