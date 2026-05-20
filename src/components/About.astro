@@ -56,7 +56,51 @@ const initials = config.name.split(' ').map(n => n[0]).join('').toUpperCase()
               {config.about[lang]}
             </p>
           </div>
-          
+
+          {config.languages && config.languages.length > 0 && (
+            <div>
+              <h3 class="text-xl font-semibold mb-6 flex items-center gap-2">
+                <span>🌐</span> {t.about.languagesTitle}
+              </h3>
+              <div class="grid sm:grid-cols-2 gap-4">
+                {config.languages.map((langItem) => {
+                  const badgeColors = {
+                    native: "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400",
+                    certified: "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300",
+                    learning: "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400",
+                  }
+                  return (
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700 hover:shadow-lg hover:shadow-indigo-500/10 transition-all duration-300">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center text-white font-bold text-sm">
+                          {langItem.shortName}
+                        </div>
+                        <div class="flex-1">
+                          <div class="flex items-center justify-between flex-wrap gap-2">
+                            <p class="font-semibold text-gray-800 dark:text-gray-200">{langItem.name[lang]}</p>
+                            <div class="flex items-center gap-2">
+                              <span class={`px-2 py-0.5 rounded-full text-xs font-bold ${badgeColors[langItem.badge as keyof typeof badgeColors] || badgeColors.certified}`}>
+                                {langItem.level[lang]}
+                              </span>
+                            </div>
+                          </div>
+                          {langItem.certification && (
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 flex items-center gap-1">
+                              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                              </svg>
+                              {langItem.certification}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          )}
+
           <div>
             <h3 class="text-xl font-semibold mb-6 flex items-center gap-2">
               <span>⚡</span> Stack

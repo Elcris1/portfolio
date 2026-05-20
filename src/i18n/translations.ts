@@ -16,6 +16,8 @@ export const translations = {
     about: {
       title: "Sobre mí",
       location: "Ubicación",
+      languagesTitle: "Idiomas",
+      certification: "Certificación",
     },
     career: {
       title: "Carrera",
@@ -71,6 +73,8 @@ export const translations = {
     about: {
       title: "About",
       location: "Location",
+      languagesTitle: "Languages",
+      certification: "Certification",
     },
     career: {
       title: "Career",
@@ -126,6 +130,8 @@ export const translations = {
     about: {
       title: "Sobre mi",
       location: "Ubicació",
+      languagesTitle: "Idiomes",
+      certification: "Certificació",
     },
     career: {
       title: "Carrera",

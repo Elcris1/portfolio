@@ -30,4 +30,27 @@ export const config = {
     Methodologies: ["Scrum", "TDD", "SDD", "AI-Driven Development"],
     Other: ["Git", "Linux", "Python", "MQTT"],
   },
+  languages: [
+    {
+      shortName: "CA",
+      name: { es: "Catalán", en: "Catalan", ca: "Català" },
+      level: { es: "Nativo", en: "Native", ca: "Natiu" },
+      badge: "native",
+      certification: null,
+    },
+    {
+      shortName: "ES",
+      name: { es: "Español", en: "Spanish", ca: "Espanyol" },
+      level: { es: "Nativo", en: "Native", ca: "Natiu" },
+      badge: "native",
+      certification: null,
+    },
+    {
+      shortName: "EN",
+      name: { es: "Inglés", en: "English", ca: "Anglès" },
+      level: { es: "C1", en: "C1", ca: "C1" },
+      badge: "certified",
+      certification: "Cambridge Advanced English (CAE)",
+    },
+  ],
 }
