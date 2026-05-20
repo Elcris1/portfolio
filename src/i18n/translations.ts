@@ -18,6 +18,7 @@ export const translations = {
       location: "Ubicación",
       languagesTitle: "Idiomas",
       certification: "Certificación",
+      stackTitle: "Stack Tecnológico",
     },
     career: {
       title: "Carrera",
@@ -75,6 +76,7 @@ export const translations = {
       location: "Location",
       languagesTitle: "Languages",
       certification: "Certification",
+      stackTitle: "Tech Stack",
     },
     career: {
       title: "Career",
@@ -132,6 +134,7 @@ export const translations = {
       location: "Ubicació",
       languagesTitle: "Idiomes",
       certification: "Certificació",
+      stackTitle: "Stack Tecnològic",
     },
     career: {
       title: "Carrera",

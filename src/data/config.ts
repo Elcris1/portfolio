@@ -24,11 +24,50 @@ export const config = {
     ca: "Desenvolupador Fullstack amb una forta especialització en backend. Em dedico a dissenyar arquitectures eficients, bases de dades optimitzades i APIs d'alt rendiment. Complemento aquesta experiència amb l'habilitat de crear el frontend d'aplicacions web modernes, garantint interfícies fluides, interactives i centrades en l'usuari.",
   },
   stack: {
-    Frontend: ["Angular", "Astro", "Jetpack Compose", "Tailwind CSS"],
-    Backend: ["SpringBoot", "NestJS", "ASP.NET Core", "SQL/NoSQL"],
-    DevOps: ["Docker", "GitHub Actions", "Google Cloud"],
-    Methodologies: ["Scrum", "TDD", "SDD", "AI-Driven Development"],
-    Other: ["Git", "Linux", "Python", "MQTT"],
+    Frontend: [
+      { name: "Angular", icon: "angular" },
+      { name: "Astro", icon: "astro" },
+      { name: "Jetpack Compose", icon: "jetpackcompose" },
+      { name: "Tailwind CSS", icon: "tailwindcss" },
+      { name: "CSS", icon: "css" },
+    ],
+    Backend: [
+      { name: "SpringBoot", icon: "spring" },
+      { name: "NestJS", icon: "nestjs" },
+      { name: "Express", icon: "express" },
+      { name: "ASP.NET Core", icon: "dotnet" },
+    ],
+    Databases: [
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "MySQL", icon: "mysql" },
+      { name: "MongoDB", icon: "mongodb" },
+      { name: "Redis", icon: null },
+    ],
+    DevOps: [
+      { name: "Docker", icon: "docker" },
+      { name: "GitHub Actions", icon: "githubactions" },
+      { name: "Google Cloud", icon: "googlecloud" },
+    ],
+    // Methodologies: [
+    //   { name: "Scrum", icon: null },
+    //   { name: "TDD", icon: null },
+    //   { name: "SDD", icon: null },
+    //   { name: "AI-Driven Development", icon: null },
+    // ],
+    Tools: [
+      { name: "Visual Studio Code", icon: null },
+      { name: "JetBrains", icon: "jetbrains" },
+      { name: "Postman", icon: "postman" },
+      { name: "Git", icon: "git" },
+      { name: "Github Copilot", icon: "githubcopilot" }
+    ],
+    Other: [
+      { name: "Linux", icon: "linux" },
+      { name: "Github", icon: "github" },
+      { name: "GitLab", icon: "gitlab" },
+      { name: "Python", icon: "python" },
+      { name: "MQTT", icon: "mqtt" },
+    ],
   },
   languages: [
     {
