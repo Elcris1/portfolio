@@ -1,47 +1,81 @@
-# Portfolio Personal
+# Personal Portfolio
 
-Portfolio personal construido con Astro y Tailwind CSS.
+A modern portfolio website built with Astro and Tailwind CSS, featuring multi-language support and a clean, responsive design.
 
-## Idiomas disponibles
+## Features
 
-- **Español** (`/es/`)
-- **English** (`/en/`)
-- **Català** (`/ca/`)
+- **Multi-language Support**: Spanish, English, and Catalan
+- **Dark Mode**: Toggle between light and dark themes
+- **Responsive Design**: Optimized for all device sizes
+- **Project Gallery**: Modal-based project showcase with images
+- **Tech Stack Display**: Visual grid of technologies by category
 
-El idioma por defecto es español. Cambia el idioma usando los selectores en el header.
+## Prerequisites
 
-## Personalización
+- Node.js 18+
+- pnpm (recommended)
 
-Edita los archivos en `/src/data/` para actualizar el contenido:
-
-- **`config.ts`**: Información personal, redes sociales, stack tecnológico
-- **`career.ts`**: Experiencia laboral y formación
-- **`projects.ts`**: Lista de proyectos
-
-Para traducir contenido personalizado, edita `/src/i18n/translations.ts`.
-
-## Desarrollo
+## Getting Started
 
 ```bash
+# Install dependencies
 pnpm install
+
+# Start development server
 pnpm dev
 ```
 
-## Estructura
+The development server will be available at `http://localhost:4321`
+
+## Project Structure
 
 ```
 src/
-├── components/   # Componentes Astro
-├── data/          # Archivos de configuración
-├── i18n/          # Traducciones
-├── layouts/      # Layout principal
-└── pages/         # Páginas con rutas dinámicas [lang]
+├── components/   # Astro components
+├── data/         # Content configuration
+│   ├── config.ts    # Personal info, social links, tech stack
+│   ├── career.ts    # Work experience & education
+│   └── projects.ts  # Project portfolio
+├── i18n/         # Translations & i18n utilities
+├── layouts/      # Base layouts
+└── pages/        # Dynamic routes [lang]
 ```
 
-## Despliegue
+## Customization
 
-El proyecto está listo para desplegar en Vercel, Netlify o cualquier hosting estático.
+### Update Personal Information
 
-```bash
-pnpm build
-```
+Edit `src/data/config.ts` to update:
+- Name, title, and tagline
+- Email and location
+- Social media links
+- Tech stack categories and technologies
+
+### Add Projects
+
+Edit `src/data/projects.ts` to add new projects. Each project supports:
+- Title and description (translatable)
+- Images array for gallery
+- Tags and tech stack
+- Links to repo/demo
+
+### Translate Content
+
+Edit `src/i18n/translations.ts` to translate:
+- UI elements (navigation, buttons, labels)
+- Section titles
+- Custom content fields in config
+
+## Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Start development server |
+| `pnpm build` | Build for production |
+| `pnpm preview` | Preview production build |
+
+## Deployment
+
+The project is configured for static deployment. Build with `pnpm build` and deploy to any static hosting service (Vercel, Netlify, GitHub Pages, etc.).
+
+GitHub Actions workflow is included for automatic deployment on push to `main`.
