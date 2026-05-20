@@ -50,6 +50,7 @@ export const translations = {
     gallery: {
       description:  "Descripción", 
       technologies: "Tecnologías", 
+      links: "Enlaces",
       gallery:  "Galería",
       noImages: "No hay imágenes disponibles" 
     }
@@ -103,6 +104,7 @@ export const translations = {
     gallery: {
       description: "Description",
       technologies: "Technologies",
+      links: "Links",
       gallery: "Gallery",
       noImages: "No images available"
     }
@@ -156,6 +158,7 @@ export const translations = {
     gallery: {
       description: "Descripció",
       technologies: "Tecnologies",
+      links: "Enllaços",
       gallery: "Galeria",
       noImages: "No hi ha imatges disponibles"
     }
