@@ -8,6 +8,17 @@ const t = useTranslations(lang)
 const imageBasePath = basePath() + ""
 
 const initials = config.name.split(' ').map(n => n[0]).join('').toUpperCase()
+
+function getIconSrc(icon: string, isDark: boolean) {
+  if (icon.indexOf('/') !== -1) {
+    let path =  imageBasePath + icon ;
+    path += isDark ? '.white.svg' : '.svg'
+    return path
+  }
+
+  const iconColor = isDark ? 'FFFFFF' : '4f46e5'
+  return `https://cdn.simpleicons.org/${icon}/${iconColor}`
+}
 ---
 
 <section id="about" class="py-24 bg-gray-50 dark:bg-gray-900">
@@ -122,9 +133,11 @@ const initials = config.name.split(' ').map(n => n[0]).join('').toUpperCase()
                     {tech.icon ? (
                       <div class="w-12 h-12 rounded-xl bg-gray-50 dark:bg-gray-700/50 flex items-center justify-center p-2 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 hover:shadow-lg hover:shadow-indigo-500/20 hover:scale-110 transition-all duration-300 cursor-pointer border border-transparent hover:border-indigo-200 dark:hover:border-indigo-700" title={tech.name}>
                         <img 
-                          src={tech.icon.indexOf('/') != -1 ? imageBasePath + tech.icon : `https://cdn.simpleicons.org/${tech.icon}/4f46e5/FFFFFF`}
+                          src={getIconSrc(tech.icon, false)}
+                          data-dark-src={getIconSrc(tech.icon, true)}
+                          data-light-src={getIconSrc(tech.icon, false)}
                           alt={tech.name}
-                          class="w-full h-full object-contain group-hover/tech:scale-110 transition-all duration-300"
+                          class="theme-aware-icon w-full h-full object-contain group-hover/tech:scale-110 transition-all duration-300"
                         />
                       </div>
                     ) : (
@@ -144,3 +157,27 @@ const initials = config.name.split(' ').map(n => n[0]).join('').toUpperCase()
     </div>
   </div>
 </section>
+
+<script>
+  function updateThemeAwareIcons() {
+    const isDark = document.documentElement.classList.contains('dark')
+    document.querySelectorAll('.theme-aware-icon').forEach((icon: HTMLImageElement) => {
+      const darkSrc = icon.dataset.darkSrc
+      const lightSrc = icon.dataset.lightSrc
+      if (darkSrc && lightSrc) {
+        icon.src = isDark ? darkSrc : lightSrc
+      }
+    })
+  }
+
+  const observer = new MutationObserver(() => {
+    updateThemeAwareIcons()
+  })
+
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class']
+  })
+
+  updateThemeAwareIcons()
+</script>

@@ -41,7 +41,7 @@ export const config = {
       { name: "PostgreSQL", icon: "postgresql" },
       { name: "MySQL", icon: "mysql" },
       { name: "MongoDB", icon: "mongodb" },
-      { name: "Redis", icon: "logos/redis.svg" },
+      { name: "Redis", icon: "logos/redis" },
     ],
     DevOps: [
       { name: "Docker", icon: "docker" },
@@ -55,7 +55,7 @@ export const config = {
     //   { name: "AI-Driven Development", icon: null },
     // ],
     Tools: [
-      { name: "VS Code", icon: "logos/vscode.svg" },
+      { name: "VS Code", icon: "logos/vscode" },
       { name: "IntelliJ IDEA", icon: "intellijidea" },
       { name: "Postman", icon: "postman" },
       { name: "Git", icon: "git" },
