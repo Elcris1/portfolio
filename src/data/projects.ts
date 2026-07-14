@@ -36,16 +36,34 @@ export const projects: Project[] = [
       ca: "DLM multi-marca OCPP per a carregadors de vehicles elèctrics",
     },
     shortDescription: {
-      es: "Software de balanceo dinamico de carga para cargadores de vehiculos electricos a traves de OCPP, con su sistema de gestión como trabajo de fin de grado para el grado en ingenieria informática.",
-      en: "Dynamic load balancing software for EV chargers built with OCPP, with its management system as a final degree project for computer engineering.",
-      ca: "Software de balanceig dinàmic de càrrega per a carregadors de vehicles elèctrics a través d'OCPP, amb el seu sistema de gestió com a treball de fi de grau per al grau enenginyeria informàtica.",
+      es: "Sistema de balanceo dinamico de carga para cargadores de vehiculos electricos a traves de OCPP, con su sistema de gestión como trabajo de fin de grado para el grado en ingenieria informática.",
+      en: "Dynamic load balancing System for EV chargers built with OCPP, with its management system as a final degree project for computer engineering.",
+      ca: "Sistema de balanceig dinàmic de càrrega per a carregadors de vehicles elèctrics a través d'OCPP, amb el seu sistema de gestió com a treball de fi de grau per al grau enenginyeria informàtica.",
     },
     description: {
-      es: "Apliación de gestión de tareas diseñada para equipos ágiles. Permite crear tableros Kanban, asignar tareas a miembros del equipo, establecer fechas límite, comentar en tareas y recibir notificaciones en tiempo real.\n\nLa colaboración en tiempo real está implementada con WebSockets (Socket.io), lo que permite ver los cambios de otros usuarios instantáneamente. El sistema de autenticación utiliza JWT y permite login con Google.",
+      es: `
+      Sistema desarrollado como parte del trabajo de fin de grado y como producto privado para uso de la empresa gestionada por mi familia, motivo por el cual no puedo proporcionar más de la siguiente información.\n\n
+      El sistema esta dividido en tres partes principales:\n\n
+      - Software DLM: Sistema de balanceo dinamico de carga para cargadores de vehiculos electricos a traves de OCPP 1.6, que permite una ejecucción local 24/7, gestion remota, permitiendo comunicación de los cargadores con plataformas de terceros y proporcionando actualizaciones en tiempo real.\n\n
+      - Backend: servidor central que recibe toda la información generada por las distintas estaciones de carga y permite la gestión de las mismas. A su vez da soporte al backoffice frontal, al cual le permite acceder a toda la información en tiempo real. Todo protegido a través del identificador corporativo. \n\n
+      - Frontend: Backoffice web que permite la visualizacion del estado del sistema y la gestion de este mismo. Disponible en modo claro y oscuro, así como la traducción al ingles, español y catalán. Los usuarios pueden identificarse a través de la cuenta corporativa de la empresa.\n\n
+      El sistema ha estado desarrollado al 100% por mi, desde el diseño de la arquitectura hasta la implementación de todas las funcionalidades. 
+      Cada parte del software intenta seguir los principios SOLID y la arquitectura por capas, así como el uso de patrones de diseño y buenas prácticas de desarrollo.\n\n
+      Proyecto al cual debo agradecer a mi tutor del trabajo de fin de grado por la aportación y criterio tecnologico.
+      `,
       en: "Task management application designed for agile teams. Allows creating Kanban boards, assigning tasks to team members, setting deadlines, commenting on tasks and receiving real-time notifications.\n\nReal-time collaboration is implemented with WebSockets (Socket.io), allowing to see other users' changes instantly. The authentication system uses JWT and allows login with Google.",
-      ca: "Aplicació de gestió de tasques dissenyada per a equips àgils. Permet crear taulers Kanban, assignar tasques a membres de l'equip, establir terminis, comentar en tasques i rebre notificacions en temps real.\n\nLa col·laboració en temps real està implementada amb WebSockets (Socket.io), permetent veure els canvis d'altres usuaris instantàniament. El sistema d'autenticació utilitza JWT i permet login amb Google.",
+      ca: `
+      Sistema desarrollado como parte del trabajo de fin de grado y como producto privado para uso de la empresa gestionada por mi familia, motivo por el cual no puedo proporcionar más de la siguiente información.\n\n
+      El sistema esta dividido en tres partes principales:\n\n
+      - Software DLM: Sistema de balanceo dinamico de carga para cargadores de vehiculos electricos a traves de OCPP 1.6, que permite una ejecucción local 24/7, gestion remota, permitiendo comunicación de los cargadores con plataformas de terceros y proporcionando actualizaciones en tiempo real.\n\n
+      - Backend: servidor central que recibe toda la información generada por las distintas estaciones de carga y permite la gestión de las mismas. A su vez da soporte al backoffice frontal, al cual le permite acceder a toda la información en tiempo real. Todo protegido a través del identificador corporativo. \n\n
+      - Frontend: Backoffice web que permite la visualizacion del estado del sistema y la gestion de este mismo. Disponible en modo claro y oscuro, así como la traducción al ingles, español y catalán. Los usuarios pueden identificarse a través de la cuenta corporativa de la empresa.\n\n
+      El sistema ha estado desarrollado al 100% por mi, desde el diseño de la arquitectura hasta la implementación de todas las funcionalidades. 
+      Cada parte del software intenta seguir los principios SOLID y la arquitectura por capas, así como el uso de patrones de diseño y buenas prácticas de desarrollo.\n\n
+      Proyecto al cual debo agradecer a mi tutor del trabajo de fin de grado por la aportación y criterio tecnologico.
+      `
     },
-    tags: ["Python", "OCPP", "Modbus", "MQTT", "NestJS", "Angular", "PostgreSQL", "InfluxDB", "Redis", "Telegraf", "Docker", "OAuth2.0" ],
+    tags: ["Python", "OCPP", "Modbus", "MQTT", "NestJS", "Angular", "Socket.IO", "PostgreSQL", "InfluxDB", "Redis", "Telegraf", "Docker", "OAuth2.0" ],
     mainImage: {
       url: "",
       alt: {
