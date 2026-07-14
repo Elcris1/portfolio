@@ -29,6 +29,34 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: {
+      es: "DLM multi-marca OCPP para cargadores de vehículos eléctricos",
+      en: "OCPP Multi-brand DLM for EV chargers",
+      ca: "DLM multi-marca OCPP per a carregadors de vehicles elèctrics",
+    },
+    shortDescription: {
+      es: "Software de balanceo dinamico de carga para cargadores de vehiculos electricos a traves de OCPP, con su sistema de gestión como trabajo de fin de grado para el grado en ingenieria informática.",
+      en: "Dynamic load balancing software for EV chargers built with OCPP, with its management system as a final degree project for computer engineering.",
+      ca: "Software de balanceig dinàmic de càrrega per a carregadors de vehicles elèctrics a través d'OCPP, amb el seu sistema de gestió com a treball de fi de grau per al grau enenginyeria informàtica.",
+    },
+    description: {
+      es: "Apliación de gestión de tareas diseñada para equipos ágiles. Permite crear tableros Kanban, asignar tareas a miembros del equipo, establecer fechas límite, comentar en tareas y recibir notificaciones en tiempo real.\n\nLa colaboración en tiempo real está implementada con WebSockets (Socket.io), lo que permite ver los cambios de otros usuarios instantáneamente. El sistema de autenticación utiliza JWT y permite login con Google.",
+      en: "Task management application designed for agile teams. Allows creating Kanban boards, assigning tasks to team members, setting deadlines, commenting on tasks and receiving real-time notifications.\n\nReal-time collaboration is implemented with WebSockets (Socket.io), allowing to see other users' changes instantly. The authentication system uses JWT and allows login with Google.",
+      ca: "Aplicació de gestió de tasques dissenyada per a equips àgils. Permet crear taulers Kanban, assignar tasques a membres de l'equip, establir terminis, comentar en tasques i rebre notificacions en temps real.\n\nLa col·laboració en temps real està implementada amb WebSockets (Socket.io), permetent veure els canvis d'altres usuaris instantàniament. El sistema d'autenticació utilitza JWT i permet login amb Google.",
+    },
+    tags: ["Python", "OCPP", "Modbus", "MQTT", "NestJS", "Angular", "PostgreSQL", "InfluxDB", "Redis", "Telegraf", "Docker", "OAuth2.0" ],
+    mainImage: {
+      url: "",
+      alt: {
+        es: "",
+        en: "",
+        ca: ""
+      }
+    },
+    images: [],
+    featured: true,
+  },
+  {
+    title: {
       es: "EcoFruit - MarketPlace de productos agrícolas",
       en: "EcoFruit - Marketplace for farm products",
       ca: "EcoFruit - MarketPlace de productes agrícoles",
@@ -121,28 +149,6 @@ export const projects: Project[] = [
     repo: "https://github.com/Elcris1/PEX-EcoFruit",
     featured: true,
   },
-//   {
-//     title: {
-//       es: "App de Gestión de Tareas",
-//       en: "Task Management App",
-//       ca: "App de Gestió de Tasques",
-//     },
-//     shortDescription: {
-//       es: "Aplicación de gestión de tareas en tiempo real con colaboración en equipo.",
-//       en: "Real-time task management application with team collaboration.",
-//       ca: "Aplicació de gestió de tasques en temps real amb col·laboració en equip.",
-//     },
-//     description: {
-//       es: "Apliación de gestión de tareas diseñada para equipos ágiles. Permite crear tableros Kanban, asignar tareas a miembros del equipo, establecer fechas límite, comentar en tareas y recibir notificaciones en tiempo real.\n\nLa colaboración en tiempo real está implementada con WebSockets (Socket.io), lo que permite ver los cambios de otros usuarios instantáneamente. El sistema de autenticación utiliza JWT y permite login con Google.",
-//       en: "Task management application designed for agile teams. Allows creating Kanban boards, assigning tasks to team members, setting deadlines, commenting on tasks and receiving real-time notifications.\n\nReal-time collaboration is implemented with WebSockets (Socket.io), allowing to see other users' changes instantly. The authentication system uses JWT and allows login with Google.",
-//       ca: "Aplicació de gestió de tasques dissenyada per a equips àgils. Permet crear taulers Kanban, assignar tasques a membres de l'equip, establir terminis, comentar en tasques i rebre notificacions en temps real.\n\nLa col·laboració en temps real està implementada amb WebSockets (Socket.io), permetent veure els canvis d'altres usuaris instantàniament. El sistema d'autenticació utilitza JWT i permet login amb Google.",
-//     },
-//     tags: ["React", "Node.js", "Socket.io", "MongoDB", "TypeScript"],
-//     images: [],
-//     repo: "https://github.com/",
-//     demo: "https://demo.com",
-//     featured: true,
-//   },
 //   {
 //     title: {
 //       es: "Sistema de Gestión Empresarial",

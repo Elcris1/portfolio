@@ -32,6 +32,8 @@ export const translations = {
       featured: "Destacado",
       repo: "Repositorio",
       demo: "Demo",
+      viewDetails: "Ver detalles",
+      noLinks: "Sin enlaces públicos",
     },
     contact: {
       title: "Hablemos",
@@ -90,6 +92,8 @@ export const translations = {
       featured: "Featured",
       repo: "Repository",
       demo: "Demo",
+      viewDetails: "View details",
+      noLinks: "No public links",
     },
     contact: {
       title: "Let's talk",
@@ -148,6 +152,8 @@ export const translations = {
       featured: "Destacat",
       repo: "Repostori",
       demo: "Demo",
+      viewDetails: "Veure detalls",
+      noLinks: "Sense enllaços públics",
     },
     contact: {
       title: "Parlem",
