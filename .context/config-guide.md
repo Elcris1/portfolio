@@ -51,3 +51,25 @@ Omit the `icon` property or set to `null`:
 ```ts
 { name: "Scrum", icon: null }
 ```
+
+## Projects Data (`src/data/projects.ts`)
+
+Each project requires a unique `id` (used for `?project=id` URL-based modal opening):
+
+```ts
+{
+  id: "my-project",        // unique slug, used in URL
+  title: { es, en, ca },
+  shortDescription: { es, en, ca },
+  description: { es, en, ca },  // use \n\n for paragraph breaks
+  tags: string[],
+  mainImage?: ProjectImage,
+  images?: ProjectImage[],
+  repo?: string,
+  demo?: string,
+  featured: boolean,
+  private?: boolean,
+}
+```
+
+To open a project detail via URL: `?project=ecofruit`

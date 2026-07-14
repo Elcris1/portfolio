@@ -8,6 +8,7 @@ export interface ProjectImage {
 }
 
 export interface Project {
+  id: string
   title: {
     [key in Language]: string
   }
@@ -28,6 +29,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "ocpp-dlm",
     title: {
       es: "DLM multi-marca OCPP para cargadores de vehículos eléctricos",
       en: "OCPP Multi-brand DLM for EV chargers",
@@ -56,6 +58,7 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: "ecofruit",
     title: {
       es: "EcoFruit - MarketPlace de productos agrícolas",
       en: "EcoFruit - Marketplace for farm products",
