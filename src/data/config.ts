@@ -1,6 +1,6 @@
 export const config = {
   name: "Eloi Cristòfol",
-  title: "Junior Fullstack Developer",
+  title: "Junior Software Engineer",
   tagline: {
     es: "Desarrollo productos digitales de principio a fin",
     en: "I build digital products from start to finish",
@@ -19,9 +19,9 @@ export const config = {
     twitter: "",
   },
   about: {
-    es: "Desarrollador Fullstack con fuerte especialización en backend. Me dedico a diseñar arquitecturas eficientes, bases de datos optimizadas y APIs de alto rendimiento. Complemento esta experiencia con la habilidad de crear el frontend de aplicaciones web modernas, garantizando interfaces fluidas, interactivas y centradas en el usuario. Aunque mi enfoque principal es el desarrollo Full-Stack, me apasiona la programación, por lo que he estado involucrado en muchos proyectos y tecnologías diferentes.",
-    en: "Fullstack Developer with a strong specialization in backend development. I am dedicated to designing efficient architectures, optimized databases, and high-performance APIs. I complement this expertise with the ability to build the frontend of modern web applications, ensuring smooth, interactive, and user-centered interfaces. Even though my main focus is Full-Stack devolopment, I am passioante for coding thus I have been involved in many different projects and technologies.",
-    ca: "Desenvolupador Fullstack amb una forta especialització en backend. Em dedico a dissenyar arquitectures eficients, bases de dades optimitzades i APIs d'alt rendiment. Complemento aquesta experiència amb l'habilitat de crear el frontend d'aplicacions web modernes, garantint interfícies fluides, interactives i centrades en l'usuari. Tot i que el meu enfocament principal és el desenvolupament Full-Stack, m'apassiona la programació, per la qual cosa he estat involucrat en molts projectes i tecnologies diferents.",
+    es: "Ingeniero técnico en informática con fuerte especialización en backend. Me dedico a diseñar arquitecturas eficientes, bases de datos optimizadas y APIs de alto rendimiento. Complemento esta experiencia con la habilidad de crear el frontend de aplicaciones web modernas, garantizando interfaces fluidas, interactivas y centradas en el usuario. Aunque mi enfoque principal es el desarrollo Full-Stack, me apasiona la programación, por lo que he estado involucrado en muchos proyectos y tecnologías diferentes.",
+    en: "Software Engineer with a strong specialization in backend development. I am dedicated to designing efficient architectures, optimized databases, and high-performance APIs. I complement this expertise with the ability to build the frontend of modern web applications, ensuring smooth, interactive, and user-centered interfaces. Even though my main focus is Full-Stack development, I am passionate about coding thus I have been involved in many different projects and technologies.",
+    ca: "Ingenier tècnic en informàtica amb una forta especialització en backend. Em dedico a dissenyar arquitectures eficients, bases de dades optimitzades i APIs d'alt rendiment. Complemento aquesta experiència amb l'habilitat de crear el frontend d'aplicacions web modernes, garantint interfícies fluides, interactives i centrades en l'usuari. Tot i que el meu enfocament principal és el desenvolupament Full-Stack, m'apassiona la programació, per la qual cosa he estat involucrat en molts projectes i tecnologies diferents.",
   },
   stack: {
     Frontend: [
