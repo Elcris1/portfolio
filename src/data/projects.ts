@@ -36,43 +36,114 @@ export const projects: Project[] = [
       ca: "DLM multi-marca OCPP per a carregadors de vehicles elèctrics",
     },
     shortDescription: {
-      es: "Sistema de balanceo dinamico de carga para cargadores de vehiculos electricos a traves de OCPP, con su sistema de gestión como trabajo de fin de grado para el grado en ingenieria informática.",
-      en: "Dynamic load balancing System for EV chargers built with OCPP, with its management system as a final degree project for computer engineering.",
-      ca: "Sistema de balanceig dinàmic de càrrega per a carregadors de vehicles elèctrics a través d'OCPP, amb el seu sistema de gestió com a treball de fi de grau per al grau enenginyeria informàtica.",
+      es: "Sistema de balanceo dinámico de carga para cargadores de vehículos eléctricos a través de OCPP, con su sistema de gestión como trabajo de fin de grado para el grado en ingeniería informática.",
+      en: "Dynamic load balancing system for EV chargers built with OCPP, with its management system as a final degree project for computer engineering.",
+      ca: "Sistema de balanceig dinàmic de càrrega per a carregadors de vehicles elèctrics a través d'OCPP, amb el seu sistema de gestió com a treball de fi de grau per al grau en enginyeria informàtica.",
     },
     description: {
-      es: `
-      Sistema desarrollado como parte del trabajo de fin de grado y como producto privado para uso de la empresa gestionada por mi familia, motivo por el cual no puedo proporcionar más de la siguiente información.\n\n
-      El sistema esta dividido en tres partes principales:\n\n
-      - Software DLM: Sistema de balanceo dinamico de carga para cargadores de vehiculos electricos a traves de OCPP 1.6, que permite una ejecucción local 24/7, gestion remota, permitiendo comunicación de los cargadores con plataformas de terceros y proporcionando actualizaciones en tiempo real.\n\n
-      - Backend: servidor central que recibe toda la información generada por las distintas estaciones de carga y permite la gestión de las mismas. A su vez da soporte al backoffice frontal, al cual le permite acceder a toda la información en tiempo real. Todo protegido a través del identificador corporativo. \n\n
-      - Frontend: Backoffice web que permite la visualizacion del estado del sistema y la gestion de este mismo. Disponible en modo claro y oscuro, así como la traducción al ingles, español y catalán. Los usuarios pueden identificarse a través de la cuenta corporativa de la empresa.\n\n
-      El sistema ha estado desarrollado al 100% por mi, desde el diseño de la arquitectura hasta la implementación de todas las funcionalidades. 
-      Cada parte del software intenta seguir los principios SOLID y la arquitectura por capas, así como el uso de patrones de diseño y buenas prácticas de desarrollo.\n\n
-      Proyecto al cual debo agradecer a mi tutor del trabajo de fin de grado por la aportación y criterio tecnologico.
-      `,
-      en: "Task management application designed for agile teams. Allows creating Kanban boards, assigning tasks to team members, setting deadlines, commenting on tasks and receiving real-time notifications.\n\nReal-time collaboration is implemented with WebSockets (Socket.io), allowing to see other users' changes instantly. The authentication system uses JWT and allows login with Google.",
-      ca: `
-      Sistema desarrollado como parte del trabajo de fin de grado y como producto privado para uso de la empresa gestionada por mi familia, motivo por el cual no puedo proporcionar más de la siguiente información.\n\n
-      El sistema esta dividido en tres partes principales:\n\n
-      - Software DLM: Sistema de balanceo dinamico de carga para cargadores de vehiculos electricos a traves de OCPP 1.6, que permite una ejecucción local 24/7, gestion remota, permitiendo comunicación de los cargadores con plataformas de terceros y proporcionando actualizaciones en tiempo real.\n\n
-      - Backend: servidor central que recibe toda la información generada por las distintas estaciones de carga y permite la gestión de las mismas. A su vez da soporte al backoffice frontal, al cual le permite acceder a toda la información en tiempo real. Todo protegido a través del identificador corporativo. \n\n
-      - Frontend: Backoffice web que permite la visualizacion del estado del sistema y la gestion de este mismo. Disponible en modo claro y oscuro, así como la traducción al ingles, español y catalán. Los usuarios pueden identificarse a través de la cuenta corporativa de la empresa.\n\n
-      El sistema ha estado desarrollado al 100% por mi, desde el diseño de la arquitectura hasta la implementación de todas las funcionalidades. 
-      Cada parte del software intenta seguir los principios SOLID y la arquitectura por capas, así como el uso de patrones de diseño y buenas prácticas de desarrollo.\n\n
-      Proyecto al cual debo agradecer a mi tutor del trabajo de fin de grado por la aportación y criterio tecnologico.
-      `
+      es: "Sistema desarrollado como parte del trabajo de fin de grado y como producto de uso privado para la empresa gestionada por mi familia, motivo por el cual no puedo proporcionar más que la siguiente información.\n\nEl sistema está dividido en tres partes principales:\n\n- Software DLM: Sistema de balanceo dinámico de carga para cargadores de vehículos eléctricos a través de OCPP 1.6, que permite una ejecución local 24/7, gestión remota, comunicación de los cargadores con plataformas de terceros y actualizaciones en tiempo real.\n\n- Backend: servidor central que recibe toda la información generada por las distintas estaciones de carga y permite la gestión de las mismas. A su vez, da soporte al backoffice frontal, permitiéndole gestionar el sistema y acceder a toda la información en tiempo real. Todo protegido a través del identificador corporativo.\n\n- Frontend: Backoffice web que permite la visualización del estado del sistema y la gestión de este. Disponible en modo claro y oscuro, así como la traducción al inglés, español y catalán. Los usuarios pueden identificarse a través de la cuenta corporativa de la empresa.\n\nHe desarrollado el sistema en solitario, desde el diseño de la arquitectura hasta la implementación de todas las funcionalidades. Cada parte del software intenta seguir los principios SOLID, así como el uso de patrones de diseño y buenas prácticas de desarrollo.\n\nQuiero agradecer a mi tutor del trabajo de fin de grado por su aportación y criterio tecnológico.",
+      en: "System developed as part of my final degree project and as a product of private usage for the company managed by my family, which is why I cannot provide more information beyond the following.\n\nThe system is divided into three main parts:\n\n- DLM Software: A dynamic load balancing system for EV chargers through OCPP 1.6, enabling local 24/7 execution, remote management, communication between chargers and third-party platforms, and real-time updates.\n\n- Backend: A central server that receives all the information generated by the different charging stations and allows their management. It also exposes various API that the backoffice can use to manage the system and acces real time information. Everything is protected through the corporate identifier.\n\n- Frontend: A web backoffice that allows visualizing the system status and managing it. Available in light and dark mode, as well as translated into English, Spanish, and Catalan. Users can sign in through the company's corporate account.\n\nI have developed the system completely on my own, from the architecture design to the implementation of all features. Each part of the software tries to follow SOLID principles, as well as the use of design patterns and good development practices.\n\nI would like to thank my final degree project tutor for his contribution and technological insight.",
+      ca: "Sistema desenvolupat com a part del treball de fi de grau i com a producte d'ús privat per a l'empresa gestionada per la meva família, motiu pel qual no puc proporcionar més informació que la següent.\n\nEl sistema està dividit en tres parts principals:\n\n- Programari DLM: Sistema de balanceig dinàmic de càrrega per a carregadors de vehicles elèctrics a través d'OCPP 1.6, que permet una execució local 24/7, gestió remota, comunicació dels carregadors amb plataformes de tercers i actualitzacions en temps real.\n\n- Backend: servidor central que rep tota la informació generada per les diferents estacions de càrrega i permet la gestió d'aquestes. Al mateix moment, dóna suport al backoffice frontal, permetent-li gestionar el sistema i accedir a tota la informació en temps real. Tot protegit a través de l'identificador corporatiu.\n\n- Frontend: Backoffice web que permet la visualització de l'estat del sistema i la gestió d'aquest. Disponible en mode clar i fosc, així com la traducció a l'anglès, espanyol i català. Els usuaris poden identificar-se a través del compte corporatiu de l'empresa.\n\nHe desenvolupat el sistema en solitari, des del disseny de l'arquitectura fins a la implementació de totes les funcionalitats. Cada part del programari intenta seguir els principis SOLID així com l'ús de patrons de disseny i bones pràctiques de desenvolupament.\n\nVull agrair al meu tutor del treball de fi de grau la seva aportació i criteri tecnològic.",
     },
     tags: ["Python", "OCPP", "Modbus", "MQTT", "NestJS", "Angular", "Socket.IO", "PostgreSQL", "InfluxDB", "Redis", "Telegraf", "Docker", "OAuth2.0" ],
     mainImage: {
-      url: "",
+      url: "projects/dlm/graph-connectors.png",
       alt: {
-        es: "",
-        en: "",
-        ca: ""
+        es: "Gráfica consumo tiempo real para un cargador",
+        en: "Real-time consumption graph for a charger",
+        ca: "Gràfica de consum en temps real per a un carregador"
       }
     },
-    images: [],
+    images: [
+      {
+        url: "projects/dlm/home-page.png",
+        alt: {
+          es: "Página de inicio",
+          en: "Home page",
+          ca: "Pàgina d&apos;inici"
+        }
+      },
+      {
+        url: "projects/dlm/google-login.png",
+        alt: {
+          es: "Inicio de sesión con cuenta corporativa",
+          en: "Login with corporate account",
+          ca: "Inici de sessió amb compte corporatiu"
+        }
+      },
+      {
+        url: "projects/dlm/restricted-page.png",
+        alt: {
+          es: "Acceso restringido a usuarios no autorizados",
+          en: "Restricted access for unauthorized users",
+          ca: "Accés restringit per a usuaris no autoritzats"
+        }
+      },
+      {
+        url: "projects/dlm/station-list.png",
+        alt: {
+          es: "Gestion de estaciones",
+          en: "Station view",
+          ca: "Gestió d&apos;estacions"
+        }
+      },
+      {
+        url: "projects/dlm/station-detail.png",
+        alt: {
+          es: "Vista detallada de una estación",
+          en: "Detailed view of a station",
+          ca: "Vista detallada d&apos;una estació"
+        }
+      },
+      {
+        url: "projects/dlm/station-detail-chargers.png",
+        alt: {
+          es: "Vista detallada de los cargadores de una estación",
+          en: "Detailed view of a station&apos;s chargers",
+          ca: "Vista detallada dels carregadors d&apos;una estació"
+        }
+      },
+      {
+        url: "projects/dlm/charger-detail.png",
+        alt: {
+          es: "Vista detallada de un cargador",
+          en: "Detailed view of a charger",
+          ca: "Vista detallada d&apos;un carregador"
+        }
+      },
+      {
+        url: "projects/dlm/charger-logs.png",
+        alt: {
+          es: "Registros generados por un cargador",
+          en: "Logs record for a charger",
+          ca: "Registre generats per un carregador"
+        }
+      },
+      {
+        url: "projects/dlm/graph-connectors.png",
+        alt: {
+          es: "Gráfica consumo tiempo real para un cargador",
+          en: "Real-time consumption graph for a charger",
+          ca: "Gràfica de consum en temps real per a un carregador"
+        }
+      },
+      {
+        url: "projects/dlm/users-page.png",
+        alt: {
+          es: "Gestión y autorización de usuarios",
+          en: "Users management and authorization",
+          ca: "Gestió i autorització d&apos;usuaris"
+        }
+      },
+      {
+        url: "projects/dlm/user-preferences.png",
+        alt: {
+          es: "Preferencias de usuario",
+          en: "User preferences",
+          ca: "Preferències d&apos;usuari"
+        }
+      }
+    ],
     featured: true,
   },
   {

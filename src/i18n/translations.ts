@@ -40,6 +40,9 @@ export const translations = {
       subtitle: "¿Tienes un proyecto en mente o simplemente quieres saludar? Escríbeme y te responderé lo antes posible.",
       copyEmail: "Copiar email",
       copied: "¡Copiado!",
+      sendMessage: "Enviar mensaje",
+      available: "Disponible para nuevas oportunidades",
+      socialMedia: "O encuéntrame en redes sociales",
     },
     footer: {
       rights: "Todos los derechos reservados.",
@@ -100,6 +103,9 @@ export const translations = {
       subtitle: "Have a project in mind or just want to say hi? Send me a message and I'll get back to you as soon as possible.",
       copyEmail: "Copy email",
       copied: "Copied!",
+      sendMessage: "Send a message",
+      available: "Available for new opportunities",
+      socialMedia: "Or find me on social media",
     },
     footer: {
       rights: "All rights reserved.",
@@ -160,6 +166,9 @@ export const translations = {
       subtitle: "Tens un projecte en ment o simplement vols saludar? Escriu-me i et respondré el més aviat possible.",
       copyEmail: "Copiar email",
       copied: "Copiat!",
+      sendMessage: "Enviar un missatge",
+      available: "Disponible per a noves oportunitats",
+      socialMedia: "O troba'm a les xarxes socials",
     },
     footer: {
       rights: "Tots els drets reservats.",
