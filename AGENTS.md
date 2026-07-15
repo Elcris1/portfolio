@@ -74,3 +74,4 @@ Must use **Tailwind v3** (not v4) for `@astrojs/tailwind` compatibility:
 - When editing code, preserve existing indentation, style, and conventions
 - Do not add comments unless explicitly requested
 - Keep changes minimal and focused on the exact request
+- For personal info, stack, or core definitions modifications: read `.context/config-guide.md`
