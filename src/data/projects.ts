@@ -241,6 +241,28 @@ export const projects: Project[] = [
     repo: "https://github.com/Elcris1/PEX-EcoFruit",
     featured: true,
   },
+  {
+    id: "portfolio",
+    title: {
+      es: "Portfolio personal",
+      en: "Personal portfolio",
+      ca: "Portfolio personal",
+    },
+    shortDescription: {
+      es: "Sitio web personal creado con Astro y Tailwind CSS para mostrar mis proyectos y experiencia profesional. Disponible en español, inglés y catalán, con modo oscuro y diseño responsive.",
+      en: "Personal website built with Astro and Tailwind CSS to showcase my projects and professional experience. Available in Spanish, English, and Catalan, with dark mode and responsive design.",
+      ca: "Lloc web personal creat amb Astro i Tailwind CSS per mostrar els meus projectes i experiència professional. Disponible en espanyol, anglès i català, amb mode fosc i disseny responsive.",
+    },
+    description: {
+      es: "Portfolio personal creado con Astro y Tailwind CSS. El sitio incluye:\n\n- Diseño responsive adaptable a todos los dispositivos\n\n- Modo oscuro/claro con persistencia en localStorage\n\n- Soporte multi idioma (español, inglés, catalán)\n\n- Secciones de experiencia profesional, educación, proyectos y stack tecnológico\n\n- Despliegue automático con GitHub Actions\n\nEste proyecto es el que estás viendo ahora mismo.",
+      en: "Personal portfolio built with Astro and Tailwind CSS. The site features:\n\n- Responsive design adaptable to all devices\n\n- Dark/light mode with localStorage persistence\n\n- Multi-language support (Spanish, English, Catalan)\n\n- Sections for professional experience, education, projects, and tech stack\n\n- Automatic deployment with GitHub Actions\n\nThis project is the one you are viewing right now.",
+      ca: "Portfolio personal creat amb Astro i Tailwind CSS. El lloc inclou:\n\n- Disseny responsive adaptable a tots els dispositius\n\n- Mode fosc/clar amb persistència a localStorage\n\n- Suport multi idioma (espanyol, anglès, català)\n\n- Seccions d'experiència professional, educació, projectes i stack tecnològic\n\n- Desplegament automàtic amb GitHub Actions\n\nAquest projecte és el que estàs veient ara mateix.",
+    },
+    tags: ["Astro", "TypeScript", "Tailwind CSS", "i18n", "GitHub Actions"],
+    repo: "https://github.com/Elcris1/portfolio",
+    demo: "https://elcris1.github.io/portfolio/en",
+    featured: false,
+  },
 //   {
 //     title: {
 //       es: "Sistema de Gestión Empresarial",
