@@ -27,6 +27,23 @@ export const career: CareerItem[] = [
   {
     type: "education",
     title: {
+      es: "Master en Ingeniería Informática",
+      en: "Computer Engineering Master's Degree",
+      ca: "Master enEnginyeria Informàtica",
+    },
+    organization: "Universidad de Lleida",
+    period: "2026 — 2027",
+    startYear: 2026,
+    endYear: 2027,
+    description: {
+      es: "Descripcion master",
+      en: "Masters description",
+      ca: "Descripcio master",
+    },
+  },
+  {
+    type: "education",
+    title: {
       es: "Grado en Ingeniería Informática",
       en: "Computer Engineering Degree",
       ca: "Grau enEnginyeria Informàtica",
@@ -83,13 +100,30 @@ export const career: CareerItem[] = [
       ca: "Desenvolupador Fullstack Junior - Pràctiques Extracurriculars",
     },
     organization: "Hiberus",
-    period: "04/2026 — ",
+    period: "04/2026 - 07/2026",
     startYear: 2026,
-    endYear: null,
+    endYear: 2026,
     description: {
       es: "AI Strategy centrado en el desarrollo impulsado por IA en aplicaciones Full-Stack internas con Spring Boot y React. TDD y SDD para garantizar la calidad del código y la eficiencia del desarrollo.",
       en: "AI Strategy focused on AI-driven development on internal Full-Stack applications with Spring Boot and React. TDD and SDD to ensure code quality and development efficiency.",
       ca: "AI Strategy centrat en desenvolupament impulsat per IA en aplicacions internes Full-Stack amb Spring Boot i React. TDD i SDD per garantir la qualitat del codi i l'eficiència del desenvolupament.",
+    },
+  },
+   {
+    type: "work",
+    title: {
+      es: "Junior Fullstack Developer",
+      en: "Junior Fullstack Developer",
+      ca: "Desenvolupador Fullstack Junior",
+    },
+    organization: "Hiberus",
+    period: "08/2026 - ",
+    startYear: 2026,
+    endYear: null,
+    description: {
+      es: "Ai-driven develpoment",
+      en: "Ai-driven development",
+      ca: "Ai-driven development",
     },
   },
 
